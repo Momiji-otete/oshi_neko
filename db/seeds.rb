@@ -15,12 +15,14 @@ EndUser.create!(
     {
       name: "猫大好き",
       email: "neko@daisuki.com",
-      password: "123456"
+      password: "123456",
+      is_deleted: false
     },
     {
       name: "猫の奴隷",
       email: "neko@dorei.com",
-      password: "123456"
+      password: "123456",
+      is_deleted: false
     }
   ]
 )
