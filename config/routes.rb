@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     sessions: "public/sessions"
   }
 
-  scope module: :pulic do
+  scope module: :public do
     root :to => "homes#top"
     get "about" => "homes#about"
     get "end_users/withdraw_confirm" => "end_users#withdraw_confirm"
