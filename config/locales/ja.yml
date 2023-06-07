@@ -1,0 +1,7 @@
+ja:
+  enum:
+    cat:
+      sex:
+        unanswered: "未回答"
+        male: "♂"
+        female: "♀"
