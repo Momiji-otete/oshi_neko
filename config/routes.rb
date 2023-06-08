@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   scope module: :public do
     root :to => "homes#top"
     get "about" => "homes#about"
-    get "end_users/withdraw_confirm" => "end_users#withdraw_confirm"
+    get "end_users/withdraw_confirm" => "end_users#withdraw_confirm", as: "withdraw_confirm"
     patch "end_users/withdraw" => "end_users#withdraw"
     resources :end_users, only: [:show, :edit, :update]
     resources :cats, only: [:new, :create, :show, :edit, :update] do

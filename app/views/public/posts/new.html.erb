@@ -16,13 +16,13 @@
     </div>
     <div class="form-group">
       <%= f.label :cat_id, "猫" %>
-      <%= f.collection_select :cat_id, current_end_user.cats, :id, :name) %>
+      <%= f.collection_select :cat_id, current_end_user.cats, :id, :name, include_blank: "選択してください" %>
     </div>
     <div class="form-group">
 
     </div>
     <div class="form-group">
-      <%= f.submit "投稿する", class: "btn btn-sm" %>
+      <%= f.submit "投稿する", class: "btn btn-sm btn-primary" %>
     </div>
     <% end %>
   </div>
