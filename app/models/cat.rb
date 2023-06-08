@@ -3,5 +3,5 @@ class Cat < ApplicationRecord
   has_many :bookmarks, dependent: :destroy
   has_many :posts, dependent: :destroy
   
-  enum sex: { unanswered: 0, male: 1, female: 2 
+  enum sex: { unanswered: 0, male: 1, female: 2 }
 end
