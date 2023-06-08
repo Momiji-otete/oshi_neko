@@ -1,0 +1,15 @@
+<div class="container">
+  <h3>ユーザー</h3>
+  <div class="row">
+    <%= form_with model: @end_user do |f| %>
+      <%= f.label :name, "ユーザー名" %>
+      <%= f.text_field :name %>
+      <%= f.label :introduction, "自己紹介" %>
+      <%= f.text_area :introduction %>
+      <%= f.submit "更新する", class: "btn btn-sm btn-success" %>
+    <% end %>
+  </div>
+  <div>
+    <%= link_to "退会する", path, class: "btn btn-sm btn-danger" %>
+  </div>
+</div>
