@@ -12,6 +12,7 @@
           <%= f.text_field :name %>
         </div>
         <div class="form-group">
+          <%= f.label :sex, "性別" %>
           <%= f.radio_button :sex, Cat.sexes.key(1) %>
           <%= f.label :sex, Cat.sexes_i18n[:male] %> <!-- オス -->
           <%= f.radio_button :sex, Cat.sexes.key(2) %>
