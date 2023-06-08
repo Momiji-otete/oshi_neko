@@ -23,4 +23,11 @@ class Public::CatsController < ApplicationController
   def update
 
   end
+  
+  
+  private
+  
+  def cat_params
+    params.require(:cat).permit(:name, :sex, :introduction, :cat_image)
+  end
 end
