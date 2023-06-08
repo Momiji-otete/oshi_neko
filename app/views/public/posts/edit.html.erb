@@ -1,0 +1,29 @@
+<div class="container">
+  <h3>投稿編集</h3>
+  <div class="row">
+    <%= form_with model: @post do |f| %>
+    <div class="form-group">
+      <%= f.label :image, "画像" %>
+      <%= f.file_field :image, accept: "image/*" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :title, "タイトル" %>
+      <%= f.text_field :title %>
+    </div>
+    <div class="form-group">
+      <%= f.label :body, "本文" %>
+      <%= f.text_area :body %>
+    </div>
+    <div class="form-group">
+      <%= f.label :cat_id, "猫" %>
+      <%= f.collection_select :cat_id, current_end_user.cats, :id, :name) %>
+    </div>
+    <div class="form-group">
+
+    </div>
+    <div class="form-group">
+      <%= f.submit "更新する", class: "btn btn-sm" %>
+    </div>
+    <% end %>
+  </div>
+</div>
