@@ -27,8 +27,12 @@
         </div>
       </div>
     </div>
+    <div>
+      <%= link_to "編集する", edit_post_path(@post), class: "btn btn-sm btn-success" %>
+      <%= link_to "削除する", destroy_post_path(@post), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-sm btn-danger" %>
+    </div>
   </div>
   <div class="row">
-    
+
   </div>
 </div>

@@ -13,7 +13,7 @@ class Public::PostsController < ApplicationController
   end
 
   def index
-
+    @posts = Post.all
   end
 
   def show
@@ -34,7 +34,8 @@ class Public::PostsController < ApplicationController
   end
 
   def destroy
-
+    Post.find(params[:id]).destroy
+    redirect_to posts_path
   end
 
   private
