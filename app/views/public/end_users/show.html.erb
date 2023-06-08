@@ -1,0 +1,37 @@
+<div class="container">
+  <h3>ユーザー詳細</h3>
+  <div class="row">
+    <div>
+      <p>ユーザー名</p>
+      <p><%= @end_user.name %></p>
+      <p>自己紹介</p>
+      <p><%= @end_user.introduction %></p>
+    </div>
+    <div>
+      <%= link_to "編集する", edit_end_user_path(@end_user), class: "btn btn-sm btn-success" %>
+    </div>
+  </div>
+  <div class="row">
+    <h5>猫ちゃん</h5>
+    <div>
+      <% @cats.each do |cat| %>
+        <div>
+          
+        </div>
+      <% end %>
+    </div>
+    <div>
+      <%= link_to "猫登録", new_cat_path, class: "btn btn-sm" %>
+    </div>
+  </div>
+  <div class="row">
+    <h5><%= @end_user.name%>さんの投稿</h5>
+    <div>
+      <% @posts.each do |post| %>
+        <div>
+          
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
