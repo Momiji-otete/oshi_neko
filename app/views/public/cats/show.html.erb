@@ -1,7 +1,24 @@
 <div class="container">
   <h3>猫詳細</h3>
   <div class="row">
-    
+    <%= image_tag @cat.get_cat_image(100,100), class: "mt-3 rounded-circle" %>
+    <table>
+      <tbody>
+        <tr>
+          <td>名前</td>
+          <td><%= @cat.name %></td>
+        </tr>
+        <tr>
+          <td>性別</td>
+          <td><%= @cat.sex_i18n %></td>
+        </tr>
+        <tr>
+          <td>猫紹介</td>
+          <td><%= @cat.introduction %></td>
+        </tr>
+      </tbody>
+    </table>
+    <%= link_to "編集する", edit_cat_path(@cat), class: "btn btn-sm btn-success" %>
   </div>
   <div class="row">
     <h5><%= @cat.name %>ちゃんの投稿</h5>
