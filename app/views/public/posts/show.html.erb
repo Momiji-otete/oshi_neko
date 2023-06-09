@@ -30,11 +30,33 @@
       </div>
     </div>
     <div>
-      <%= link_to "編集する", edit_post_path(@post), class: "btn btn-sm btn-success" %>
-      <%= link_to "削除する", post_path(@post), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-sm btn-danger" %>
+      <% if @post.end_user == current_end_user %>
+        <%= link_to "編集する", edit_post_path(@post), class: "btn btn-sm btn-success" %>
+        <%= link_to "削除する", post_path(@post), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-sm btn-danger" %>
+      <% end %>
     </div>
   </div>
   <div class="row">
-
+    <table class="table table-borderless">
+      <tbody>
+        <% @post.comments.each do |comment| %>
+          <tr>
+            <td><%= comment.end_user.name %></td>
+            <td class="border"><%= comment.comment_content %></td>
+            <td>
+              <% if comment.end_user == current_end_user %>
+                <%= link_to "削除する", post_comment_path(@post, comment), method: :delete, class: "btn btn-sm btn-danger" %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <div class="row">
+    <%= form_with model: [@post, @post_comment] do |f| %>
+      <%= f.text_area :comment_content, rows: "5", placeholder: "コメントする" %>
+      <%= f.submit "送信する" %>
+    <% end %>
   </div>
 </div>
