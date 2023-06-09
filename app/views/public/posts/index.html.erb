@@ -26,6 +26,7 @@
               <div class="like-<%= post.id %>">
                 <%= render "public/likes/likes_btn", post: post %>
               </div>
+              <p><%= post.comments.count %>コメント</p>
               <span><%= post.created_at.strftime('%Y/%m/%d') %></span>
             </div>
           </div>

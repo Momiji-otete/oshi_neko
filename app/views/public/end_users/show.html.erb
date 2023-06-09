@@ -8,7 +8,9 @@
       <p><%= @end_user.introduction %></p>
     </div>
     <div>
-      <%= link_to "編集する", edit_end_user_path(@end_user), class: "btn btn-sm btn-success" %>
+      <% if @end_user == current_end_user %>
+        <%= link_to "編集する", edit_end_user_path(@end_user), class: "btn btn-sm btn-success" %>
+      <% end %>
     </div>
   </div>
   <div class="row">
@@ -30,7 +32,9 @@
       </div>
     </div>
     <div>
-      <%= link_to "猫登録", new_cat_path, class: "btn btn-sm btn-primary" %>
+      <% if @end_user == current_end_user %>
+        <%= link_to "猫登録", new_cat_path, class: "btn btn-sm btn-primary" %>
+      <% end %>
     </div>
   </div>
   <div class="row">
