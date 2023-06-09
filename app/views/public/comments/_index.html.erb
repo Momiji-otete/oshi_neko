@@ -1,0 +1,15 @@
+<table class="table table-borderless">
+  <tbody>
+    <% post.comments.each do |comment| %>
+      <tr>
+        <td><%= comment.end_user.name %></td>
+        <td class="border"><%= comment.comment_content %></td>
+        <td>
+          <% if comment.end_user == current_end_user %>
+            <%= link_to "削除する", post_comment_path(post, comment), method: :delete, remote: true, class: "btn btn-sm btn-danger" %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
