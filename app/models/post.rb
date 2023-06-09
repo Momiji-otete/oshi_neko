@@ -16,4 +16,7 @@ class Post < ApplicationRecord
     image.variant(resize_to_limit: [width, height]).processed
   end
 
+  def liked_by?(end_user)
+    likes.exists?(end_user_id: end_user.id)
+  end
 end

@@ -19,9 +19,21 @@
             <p>
               <%= link_to "#タグ" %>
             </p>
-            <p>
-              いいね
-            </p>
+            <% if @post.liked_by?(current_end_user) %>
+              <p>
+                <%= link_to post_likes_path(@post), method: :delete do %>
+                  <i class="fa-solid fa-heart"></i>
+                  <%= @post.likes.count %> いいね
+                <% end %>
+              </p>
+            <% else %>
+              <p>
+                <%= link_to post_likes_path(@post), method: :post do %>
+                  <i class="fa-regular fa-heart"></i>
+                  <%= @post.likes.count %> いいね
+                <% end %>
+              </p>
+            <% end %>
             <span><%= @post.created_at.strftime('%Y/%m/%d') %></span>
           </div>
         </div>
