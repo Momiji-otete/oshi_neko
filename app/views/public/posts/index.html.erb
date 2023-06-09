@@ -21,9 +21,9 @@
               <p>
                 <%= link_to "#タグ" %>
               </p>
-              <p>
-                いいね
-              </p>
+              <div class="like-<%= post.id %>">
+                <%= render "public/likes/likes_btn", post: post %>
+              </div>
               <span><%= post.created_at.strftime('%Y/%m/%d') %></span>
             </div>
           </div>
