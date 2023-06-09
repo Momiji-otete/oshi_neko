@@ -9,8 +9,10 @@
         <div class="card-body">
           <div class="row">
             <div class="col-4">
-              <%= image_tag post.cat.get_cat_image(100,100), class: "mt-3 rounded-circle" %>
-              <%= post.cat.name %>
+              <%= link_to cat_path(post.cat) do %>
+                <%= image_tag post.cat.get_cat_image(100,100), class: "mt-3 rounded-circle" %>
+                <%= post.cat.name %>
+              <% end %>
             </div>
             <div class="col-8">
               <p class="card-title">
