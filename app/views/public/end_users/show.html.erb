@@ -26,6 +26,9 @@
             </div>
             <div>
               <%= cat.name %>
+              <div class="bookmark-<%= cat.id %>">
+                <%= render "public/bookmarks/bookmarks_btn", cat: cat %>
+              </div>
             </div>
           </div>
         <% end %>

@@ -7,9 +7,12 @@
         <div class="row">
           <div class="col-4">
             <%= link_to cat_path(@post.cat) do %>
-              <%= image_tag @post.cat.get_cat_image(80,120), class: "mt-3 rounded-circle" %>
+              <%= image_tag @post.cat.get_cat_image(80,120), class: "mt-3 rounded-circle" %><br>
               <%= @post.cat.name %>
             <% end %>
+            <div class="bookmark-<%= @post.cat_id %>">
+              <%= render "public/bookmarks/bookmarks_btn", cat: @post.cat %>
+            </div>
           </div>
           <div class="col-8">
             <p class="card-title">
