@@ -10,6 +10,16 @@
               <%= image_tag @post.cat.get_cat_image(80,120), class: "mt-3 rounded-circle" %>
               <%= @post.cat.name %>
             <% end %>
+            <% if current_end_user.bookmarked?(@post.cat) %>
+              <%= link_to cat_bookmarks_path(@post.cat), method: :delete do %>
+                <i class="fa-solid fa-star"></i>
+              <% end %>
+            <% else %>
+              <%= link_to cat_bookmarks_path(@post.cat), method: :post do %>
+                <i class="fa-regular fa-star"></i>
+              <% end %>
+            <% end %>
+
           </div>
           <div class="col-8">
             <p class="card-title">
