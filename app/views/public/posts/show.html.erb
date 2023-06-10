@@ -7,19 +7,12 @@
         <div class="row">
           <div class="col-4">
             <%= link_to cat_path(@post.cat) do %>
-              <%= image_tag @post.cat.get_cat_image(80,120), class: "mt-3 rounded-circle" %>
+              <%= image_tag @post.cat.get_cat_image(80,120), class: "mt-3 rounded-circle" %><br>
               <%= @post.cat.name %>
             <% end %>
-            <% if current_end_user.bookmarked?(@post.cat) %>
-              <%= link_to cat_bookmarks_path(@post.cat), method: :delete do %>
-                <i class="fa-solid fa-star"></i>
-              <% end %>
-            <% else %>
-              <%= link_to cat_bookmarks_path(@post.cat), method: :post do %>
-                <i class="fa-regular fa-star"></i>
-              <% end %>
-            <% end %>
-
+            <div class="bookmark-<%= @post.id %>">
+              <%= render "public/bookmarks/bookmarks_btn", cat: @post.cat %>
+            </div>
           </div>
           <div class="col-8">
             <p class="card-title">
