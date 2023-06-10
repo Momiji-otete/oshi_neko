@@ -15,4 +15,8 @@ class EndUser < ApplicationRecord
   def bookmarked?(cat)
     bookmark_cats.include?(cat)
   end
+
+  def own_cats?(cat)
+    cats.include?(cat)
+  end
 end

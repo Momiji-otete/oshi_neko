@@ -20,6 +20,14 @@
               <td>猫紹介</td>
               <td><%= @cat.introduction %></td>
             </tr>
+            <tr>
+              <td>ご主人様</td>
+              <td>
+                <%= link_to end_user_path(@cat.end_user) do %>
+                  <%= @cat.end_user.name %>
+                <% end %>
+              </td>
+            </tr>
           </tbody>
         </table>
         <%= link_to "編集する", edit_cat_path(@cat), class: "btn btn-sm btn-success" %>
