@@ -22,11 +22,7 @@
               <%= @post.body %>
             </p>
             <p>
-              <% @post.tags.each do |tag| %>
-                <li style="list-style: none;">
-                  <%= link_to "##{tag.name}" %>
-                </li>
-              <% end %>
+              <%= render "tag_link", post: @post %>
             </p>
             <div class="like-<%= @post.id %>">
               <%= render "public/likes/likes_btn", post: @post %>
