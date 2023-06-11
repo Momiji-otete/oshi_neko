@@ -5,7 +5,10 @@ class Public::PostsController < ApplicationController
 
   def create
     @post = current_end_user.posts.new(post_params)
+    #送られてきたtag_nameをカンマで区切って配列にする
+    tag_list = params[:post][:tag_name].split(',')
     if @post.save
+      @post.save_tags(tag_list)
       redirect_to post_path(@post)
     else
       render :new
@@ -23,11 +26,14 @@ class Public::PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
+    @tag_list = @post.tags.pluck(:name).join(',')
   end
 
   def update
     @post = Post.find(params[:id])
+    tag_list = params[:post][:tag_name].split(',')
     if @post.update(post_params)
+      @post.save_tags(tag_list)
       redirect_to post_path(@post)
     else
       render :edit
