@@ -22,7 +22,7 @@
               <%= @post.body %>
             </p>
             <p>
-              <%= link_to "#タグ" %>
+              <%= render "tag_link", post: @post %>
             </p>
             <div class="like-<%= @post.id %>">
               <%= render "public/likes/likes_btn", post: @post %>
