@@ -4,6 +4,7 @@ class Admin::EndUsersController < ApplicationController
   end
 
   def show
+    @end_user = EndUser.find(params[:id])
   end
 
   def edit
