@@ -1,9 +1,9 @@
 <div class="container">
   <div class="row">
     <div class="col">
-      <h3>投稿一覧</h3>
+      <h3><%= @end_user.name %>さんの投稿一覧</h3>
       <div class="row">
-        <%= render "index", posts: @posts %>
+        <%= render "admin/posts/index", posts: @end_user.posts %>
       </div>
     </div>
   </div>

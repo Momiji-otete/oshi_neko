@@ -1,0 +1,23 @@
+<div class="container">
+  <h3>ユーザー編集</h3>
+  <div class="row">
+    <%= form_with model: @end_user, url: admin_end_user_path(@end_user) do |f| %>
+      <%= f.label :name, "ユーザー名" %>
+      <%= f.text_field :name %>
+      
+      <%= f.label :introduction, "自己紹介" %>
+      <%= f.text_area :introduction %>
+      
+      <%= f.label :email, "メールアドレス" %>
+      <%= f.text_field :email %>
+      
+      <%= f.label :is_deleted, "ステータス" %>
+      <%= f.radio_button :is_deleted, false %>
+      <%= f.label :is_deleted, "有効" %>
+      <%= f.radio_button :is_deleted, true %>
+      <%= f.label :is_deleted, "退会" %>
+      
+      <%= f.submit "更新する", class: "btn btn-sm btn-success" %>
+    <% end %>
+  </div>
+</div>

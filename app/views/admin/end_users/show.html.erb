@@ -1,0 +1,60 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h3>ユーザー詳細</h3>
+      <div class="row">
+        <table class="table table-bordered">
+          <tbody>
+            <tr>
+              <td>ユーザーID</td>
+              <td><%= @end_user.id %></td>
+            </tr>
+            <tr>
+              <td>ユーザー名</td>
+              <td><%= @end_user.name %></td>
+            </tr>
+            <tr>
+              <td>メールアドレス</td>
+              <td><%= @end_user.email %></td>
+            </tr>
+            <tr>
+              <td>ステータス</td>
+              <td>
+                <% if @end_user.is_deleted == false %>
+                  <p class="text-success">有効</p>
+                <% else %>
+                  <p class="text-secondary">退会</p>
+                <% end %>
+              </td>
+            </tr>
+            <tr>
+              <td>自己紹介</td>
+              <td><%= @end_user.introduction %></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="row">
+        <%= link_to "編集する", edit_admin_end_user_path(@end_user), class: "btn btn-sm btn-success" %>
+        <%= link_to "#{@end_user.name}さんの投稿一覧へ", admin_end_user_post_index_path %>
+      </div>
+      <div class="row">
+        <h5>猫ちゃん</h5>
+        <div class="card-deck">
+          <% @end_user.cats.each do |cat| %>
+            <div class="card text-center">
+              <div class="card-header">
+                <%#= link_to admin_cat_path(cat) do %>
+                  <%= image_tag cat.get_cat_image(100,100), class: "mt-3 rounded-circle" %>
+                <%# end %>
+              </div>
+              <div>
+                <%= cat.name %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

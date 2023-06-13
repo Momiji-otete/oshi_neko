@@ -26,10 +26,10 @@ class Public::EndUsersController < ApplicationController
     reset_session
     redirect_to root_path
   end
-  
+
   private
-  
+
   def end_user_params
-    params.require(:end_user).permit(:name, :introduction)
+    params.require(:end_user).permit(:name, :introduction, :email)
   end
 end
