@@ -19,4 +19,17 @@ class EndUser < ApplicationRecord
   def own_cats?(cat)
     cats.include?(cat)
   end
+  
+  def self.search_for(search_word, method)
+    if method == "perfect"
+      EndUser.where(name: search_word)
+    elsif method == "forward"
+      EndUser.where("name LIKE ?", "#{search_word}%")
+    elsif method == "backward"
+      EndUser.where("name LIKE ?", "%#{search_word}")
+    else
+      EndUser.where("name LIKE ?", "%#{search_word}%")
+    end
+  end
+
 end

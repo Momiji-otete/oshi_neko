@@ -1,0 +1,28 @@
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>ユーザー名</th>
+      <th>ステータス</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% end_users.each do |end_user| %>
+      <tr>
+        <td><%= end_user.id %></td>
+        <td>
+          <%= link_to admin_end_user_path(end_user) do %>
+            <%= end_user.name %>
+          <% end %>
+        </td>
+        <td>
+          <% if end_user.is_deleted == false %>
+            <p class="text-success">有効</p>
+          <% else %>
+            <p class="text-secondary">退会</p>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

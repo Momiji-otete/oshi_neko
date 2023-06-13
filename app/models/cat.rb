@@ -14,4 +14,16 @@ class Cat < ApplicationRecord
     end
     cat_image.variant(resize_to_limit: [width, height]).processed
   end
+  
+  def self.search_for(search_word, method)
+    if method == "perfect"
+      Cat.where(breed: search_word)
+    elsif method == "forward"
+      Cat.where("breed LIKE ?", "#{search_word}%")
+    elsif method == "backward"
+      Cat.where("breed LIKE ?", "%#{search_word}")
+    else
+      Cat.where("breed LIKE ?", "%#{search_word}%")
+    end
+  end
 end

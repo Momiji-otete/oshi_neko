@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   scope module: :public do
     root :to => "homes#top"
     get "about" => "homes#about"
+    get "search" => "homes#search"
     get "end_users/withdraw_confirm" => "end_users#withdraw_confirm", as: "withdraw_confirm"
     patch "end_users/withdraw" => "end_users#withdraw"
     resources :end_users, only: [:show, :edit, :update]
@@ -27,6 +28,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
    get "/" => "homes#top"
+   get "search" => "homes#search"
    resources :posts, only: [:index, :show, :destroy] do
      resources :comments, only: [:destroy]
    end
