@@ -24,7 +24,9 @@
         <%= link_to "削除する", admin_post_path(@post), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-sm btn-danger" %>
       </div>
       <div class="row">
-        
+        <div class="comment-index">
+          <%= render "admin/comments/index", post: @post %>
+        </div>
       </div>
     </div>
   </div>
