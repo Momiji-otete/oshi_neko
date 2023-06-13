@@ -1,5 +1,5 @@
 class Admin::EndUsersController < ApplicationController
-  before_action :find_end_user, only: [:show, :edit, :update, :post_index]
+  before_action :find_end_user, only: [:show, :edit, :update]
 
   def show
   end
@@ -15,7 +15,8 @@ class Admin::EndUsersController < ApplicationController
     end
   end
 
-  def post_index
+  def posts_index
+    @end_user = EndUser.find(params[:end_user_id])
   end
 
 
