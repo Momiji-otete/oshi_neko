@@ -31,7 +31,7 @@ Rails.application.routes.draw do
      resources :comments, only: [:destroy]
    end
    resources :end_users, only: [:show, :edit, :update] do
-     get "posts" => "end_users#post_index", as: "post_index"
+     get "posts" => "end_users#posts_index", as: "posts_index"
    end
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

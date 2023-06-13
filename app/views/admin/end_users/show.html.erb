@@ -36,7 +36,7 @@
       </div>
       <div class="row">
         <%= link_to "編集する", edit_admin_end_user_path(@end_user), class: "btn btn-sm btn-success" %>
-        <%= link_to "#{@end_user.name}さんの投稿一覧へ", admin_end_user_post_index_path %>
+        <%= link_to "#{@end_user.name}さんの投稿一覧へ", admin_end_user_posts_index_path(@end_user) %>
       </div>
       <div class="row">
         <h5>猫ちゃん</h5>

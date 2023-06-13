@@ -37,6 +37,9 @@ class Public::RegistrationsController < Devise::RegistrationsController
   # def cancel
   #   super
   # end
+  def after_sign_in_path_for(resource)
+    end_user_path(current_end_user)
+  end
 
   # protected
 
