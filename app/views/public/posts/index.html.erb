@@ -1,5 +1,13 @@
 <div class="container">
   <h3>タイムライン</h3>
+  <% if params[:post] == "likes" %>
+    <p>いいねした投稿を表示中</p>
+  <% elsif params[:post] == "all" %>
+    <p>みんなの投稿を表示中</p>
+  <% else %>
+    <p>ブックマークした猫ちゃんの投稿を表示中</p>
+  <% end %>
+  <%= link_to "いいねした投稿", posts_path(post: "likes") %> | <%= link_to "みんなの投稿", posts_path(post: "all") %>
   <div class="row">
     <%= render "index", posts: @posts %>
   </div>

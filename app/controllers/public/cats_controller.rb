@@ -29,6 +29,10 @@ class Public::CatsController < ApplicationController
     end
   end
 
+  def ranking
+    @cats = Cat.find(Bookmark.group(:cat_id).order('count(cat_id) desc').limit(10).pluck(:cat_id))
+  end
+
 
   private
 

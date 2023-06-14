@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h3>ランキング</h3>
+      <p>ブックマーク数のランキング</p>
+      <table class="table">
+        <thead>
+          <tr>
+            <th></th>
+            <th></th>
+            <th>名前</th>
+            <th>猫種</th>
+            <th>ブックマーク数</th>
+            <th>投稿数</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% num = 1 %>
+          <% @cats.each do |cat| %>
+            <tr>
+              <td><%= num %></td>
+              <td><%= image_tag cat.get_cat_image(100,100), class: "rounded-circle" %></td>
+              <td>
+                <%= link_to cat_path(cat) do %>
+                  <%= cat.name %>
+                <% end %>
+              </td>
+              <td><%= cat.breed %></td>
+              <td><%= cat.bookmarks.count %>ブックマーク</td>
+              <td><%= cat.posts.count %>投稿</td>
+            </tr>
+            <% num += 1 %>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
