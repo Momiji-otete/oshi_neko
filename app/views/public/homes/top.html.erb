@@ -1,1 +1,51 @@
-<h1>public#homes</h1>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="row">
+        <h3>お勧めの猫</h3>
+      </div>
+      <div class="row">
+        <div class="card-deck">
+          <% @rand_cats.each do |cat| %>
+            <div class="card">
+              <%= link_to cat_path(cat) do %>
+                <%= image_tag cat.get_cat_image(100,100), class: "card-img-top rounded-circle" %>
+              <% end %>
+              <p><%= cat.name %></p>
+              <p>
+                ブックマーク数:
+                <%= cat.bookmarks.count %>
+              </p>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <div class="row">
+        <h3>最近の投稿</h3>
+      </div>
+      <div class="row">
+        <div class="card-deck">
+          <% @posts.each do |post| %>
+            <div class="card">
+              <%= image_tag post.get_image(120,200), class: "card-img-top" %>
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-4">
+                    <%= image_tag post.cat.get_cat_image(80,80), class: "rounded-circle" %>
+                    <%= post.cat.name %>
+                  </div>
+                  <div class="col-8">
+                    <%= post.title %>
+                    <p><%= post.likes.count %>いいね</p>
+                    <%= post.comments.count %>コメント
+                  </div>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
