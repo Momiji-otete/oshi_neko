@@ -19,6 +19,7 @@ class Public::PostsController < ApplicationController
       @posts = Post.all.order("created_at DESC")
     else
       cats = current_end_user.bookmark_cats
+      #bookmarkしている猫の投稿をそれぞれ加えたあと、投稿日時が新しい順で並び替えしている
       @posts = cats.inject(init = []) {|result, cat| result + cat.posts}.sort_by(&:created_at).reverse
     end
   end
