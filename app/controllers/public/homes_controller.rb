@@ -1,10 +1,12 @@
 class Public::HomesController < ApplicationController
   def top
+    @rand_cats = Cat.where('id >= ?', rand(Cat.first.id..Cat.last.id)).limit(3)
+    @posts = Post.joins(:end_user).where(end_user: { is_deleted: false }).order("created_at DESC").limit(3)
   end
 
   def about
   end
-  
+
   def search
     @model = params[:model]
     @search_word = params[:search_word]

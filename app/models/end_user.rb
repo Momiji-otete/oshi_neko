@@ -32,5 +32,11 @@ class EndUser < ApplicationRecord
       EndUser.where("name LIKE ?", "%#{search_word}%")
     end
   end
+  
+  def self.guest
+    find_or_create_by!(name: 'guestuser', email: 'guest@example.com') do |end_user|
+      end_user.password = SecureRandom.urlsafe_base64
+    end
+  end
 
 end
