@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <% if @model == "end_user" %>
+        <h3>ユーザー検索</h3>
+        <%= render "admin/end_users/index", end_users: @results %>
+      <% else %> <!-- model == ("post" || "tag") -->
+        <h3>投稿検索</h3>
+        <%= render "admin/posts/index", posts: @results %>
+      <% end %>
+    </div>
+  </div>
+</div>

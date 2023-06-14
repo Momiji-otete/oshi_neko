@@ -1,7 +1,7 @@
 <header class="shadow-sm">
   <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container">
-      <%= link_to "Oshineko", root_path, class: "navbar-brand p-3" %>
+      <%= link_to "Oshineko", (admin_signed_in? ? admin_path : root_path), class: "navbar-brand p-3" %>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -45,6 +45,9 @@
             </li>
           <% end %>
         </ul>
+      </div>
+      <div>
+        <%= render "layouts/search_form" %>
       </div>
     </div>
   </nav>
