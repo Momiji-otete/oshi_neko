@@ -5,10 +5,7 @@ class Public::PostsController < ApplicationController
 
   def create
     @post = current_end_user.posts.new(post_params)
-    #送られてきたtag_nameをカンマで区切って配列にする
-    tag_list = params[:post][:tag_name].split(',')
     if @post.save
-      @post.save_tags(tag_list)
       redirect_to post_path(@post)
     else
       render :new
@@ -16,7 +13,14 @@ class Public::PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.all
+    if params[:post] == "likes"
+      @posts = current_end_user.like_posts.order("created_at DESC")
+    elsif params[:post] == "all"
+      @posts = Post.all.order("created_at DESC")
+    else
+      cats = current_end_user.bookmark_cats
+      @posts = cats.inject(init = []) {|result, cat| result + cat.posts}.sort_by(&:created_at).reverse
+    end
   end
 
   def show
@@ -26,14 +30,11 @@ class Public::PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
-    @tag_list = @post.tags.pluck(:name).join(',')
   end
 
   def update
     @post = Post.find(params[:id])
-    tag_list = params[:post][:tag_name].split(',')
     if @post.update(post_params)
-      @post.save_tags(tag_list)
       redirect_to post_path(@post)
     else
       render :edit

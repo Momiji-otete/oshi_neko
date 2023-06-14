@@ -1,5 +1,6 @@
 <div class="container">
   <h3>タイムライン</h3>
+  <%= link_to "いいねした投稿", posts_path(post: "likes") %> | <%= link_to "みんなの投稿", posts_path(post: "all") %>
   <div class="row">
     <%= render "index", posts: @posts %>
   </div>

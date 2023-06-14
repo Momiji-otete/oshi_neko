@@ -7,6 +7,7 @@ class EndUser < ApplicationRecord
   has_many :cats, dependent: :destroy
   has_many :posts, dependent: :destroy
   has_many :likes, dependent: :destroy
+  has_many :like_posts, through: :likes, source: :post
   has_many :comments, dependent: :destroy
   has_many :bookmarks, dependent: :destroy
   has_many :bookmark_cats, through: :bookmarks, source: :cat
