@@ -8,7 +8,7 @@ class Cat < ApplicationRecord
   has_one_attached :cat_image
   
   validates :name, presence: true
-  validates :introduction, length: { maximum: 200 
+  validates :introduction, length: { maximum: 200 }
 
   def get_cat_image(width, height)
     unless cat_image.attached?
