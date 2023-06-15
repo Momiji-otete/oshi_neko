@@ -1,7 +1,52 @@
 ja:
+  activerecord:
+    attributes:
+      post:
+        title: "タイトル"
+        body: "本文"
+        cat_id: "猫"
+      end_user:
+        name: "ユーザー名"
+        email: "メールアドレス"
+        password: "パスワード"
+        password_confirmation: "パスワード(確認用)"
+        current_password: "現在のパスワード"
+        introduction: "自己紹介"
+      cat:
+        name: "名前"
+        sex: "性別"
+        breed: "猫種"
+        introduction: "猫紹介"
+      comment:
+        comment_content: "コメント"
+      
   enums:
     cat:
       sex:
         unanswered: "未回答"
         male: "♂"
         female: "♀"
+
+  devise:
+    failure:
+      already_authenticated: "既にログイン済みです。"
+      # inactive: "Your account is not activated yet."
+      invalid: "メールアドレスまたはパスワードが正しくありません。"
+      not_found_in_database: "メールアドレスまたはパスワードが正しくありません。"
+      # timeout: "Your session expired. Please sign in again to continue."
+      unauthenticated: "続けるにはログインが必要です。"
+    registrations:
+      signed_up: "会員登録が完了しました。ようこそ推し猫へ！"
+      updated: "パスワードの更新が完了しました。"
+    sessions:
+      signed_in: "ログインが完了しました。"
+      signed_out: "ログアウトが完了しました。"
+      already_signed_out: "ログアウトが完了しました。"
+  errors:
+    messages:
+      already_confirmed: "メールアドレスは既に登録されています。"
+      # not_found: "not found"
+      # not_locked: "was not locked"
+      not_saved: 
+        one: "エラーが発生しました。以下ご確認お願いいたします。"
+        other: "エラーが発生しました。以下ご確認お願いいたします。"

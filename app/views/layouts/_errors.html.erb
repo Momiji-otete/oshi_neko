@@ -3,7 +3,7 @@
     <h3>
       <%= I18n.t("errors.messages.not_saved",
                  count: obj.errors.count,
-                 obj: obj.class.model_name.human.downcase)
+                 obj: obj.class.model_name.human.downcase) #レシーバーのモデル名を取得
       %>
     </h3>
     <ul>
