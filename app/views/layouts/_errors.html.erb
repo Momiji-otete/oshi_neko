@@ -1,6 +1,6 @@
 <% if obj.errors.any? %>
   <div id="error_explanation">
-    <h3>
+    <h5>
       <%= I18n.t("errors.messages.not_saved",
                  count: obj.errors.count,
                  obj: obj.class.model_name.human.downcase) #レシーバーのモデル名を取得

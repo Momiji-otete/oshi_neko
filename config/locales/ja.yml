@@ -1,5 +1,11 @@
 ja:
   activerecord:
+    models:
+      post: "投稿"
+      end_user: "ユーザー"
+      cat: "猫"
+      comment: "コメント"
+      admin: "管理者"
     attributes:
       post:
         title: "タイトル"
@@ -18,10 +24,13 @@ ja:
         breed: "猫種"
         introduction: "猫紹介"
       comment:
-        comment_content: "コメント"
+        comment_content: "コメント内容"
       tag:
         name: "タグ名"
-      
+      admin:
+        email: "メールアドレス"
+        password: "パスワード"
+
   enums:
     cat:
       sex:
@@ -49,6 +58,6 @@ ja:
       already_confirmed: "メールアドレスは既に登録されています。"
       # not_found: "not found"
       # not_locked: "was not locked"
-      not_saved: 
+      not_saved:
         one: "エラーが発生しました。以下ご確認お願いいたします。"
         other: "エラーが発生しました。以下ご確認お願いいたします。"
