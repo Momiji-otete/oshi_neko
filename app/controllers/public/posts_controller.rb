@@ -1,6 +1,8 @@
 class Public::PostsController < ApplicationController
   def new
     @post = Post.new
+    #猫を登録していない状態だと猫登録に遷移させる
+    redirect_to new_cat_path, notice: "猫の登録から行ってください。" unless current_end_user.cats.exists?
   end
 
   def create
