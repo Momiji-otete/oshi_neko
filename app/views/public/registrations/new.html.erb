@@ -3,7 +3,7 @@
     <div class="col">
       <h3>新規会員登録</h3>
       <%= form_with model: @end_user, url: end_user_registration_path do |f| %>
-        <%= render "public/shared/error_messages", resource: resource %>
+        <%= render "layouts/errors", obj: @end_user %>
         <div class="form-group">
           <table class="table table-borderless">
             <tboby>

@@ -6,6 +6,7 @@ class Public::CatsController < ApplicationController
   def create
     @cat = current_end_user.cats.new(cat_params)
     if @cat.save
+      flash[:notice] = "猫を登録しました。"
       redirect_to cat_path(@cat)
     else
       render :new
@@ -23,6 +24,7 @@ class Public::CatsController < ApplicationController
   def update
     @cat = Cat.find(params[:id])
     if @cat.update(cat_params)
+      flash[:notice] = "変更を保存しました。"
       redirect_to cat_path(@cat)
     else
       render :edit
