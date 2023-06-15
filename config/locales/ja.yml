@@ -19,6 +19,8 @@ ja:
         introduction: "猫紹介"
       comment:
         comment_content: "コメント"
+      tag:
+        name: "タグ名"
       
   enums:
     cat:

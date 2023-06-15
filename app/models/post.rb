@@ -7,6 +7,10 @@ class Post < ApplicationRecord
   has_many :tags, through: :post_tags
 
   has_one_attached :image
+  
+  validates :title, presence: true
+  validates :body, presence: true
+  validates :cat_id, presence: true
 
   def get_image(width, height)
     unless image.attached?
