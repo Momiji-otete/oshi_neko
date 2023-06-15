@@ -25,6 +25,7 @@ class Public::EndUsersController < ApplicationController
   def withdraw
     current_end_user.update(is_deleted: true)
     reset_session
+    flash[:warning] = "退会処理が完了しました。"
     redirect_to root_path
   end
 

@@ -12,7 +12,9 @@ class EndUser < ApplicationRecord
   has_many :bookmarks, dependent: :destroy
   has_many :bookmark_cats, through: :bookmarks, source: :cat
 
-
+  validates :name, length: { in: 1..10 }, uniqueness: true
+  validates :introduction, length: { maximum: 200 }
+  
   def bookmarked?(cat)
     bookmark_cats.include?(cat)
   end

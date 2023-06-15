@@ -3,6 +3,7 @@
     <div class="col">
       <h3>ログイン</h3>
       <%= form_with model: @end_user, url: end_user_session_path do |f| %>
+        <%= render "layouts/errors", obj: @end_user %>
         <div class="form-group">
           <table class="table table-borderless">
             <tbody>

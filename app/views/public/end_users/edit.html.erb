@@ -1,14 +1,23 @@
 <div class="container">
   <h3>ユーザー編集</h3>
+  <%= render "layouts/errors", obj: @end_user %>
   <div class="row">
     <%= form_with model: @end_user do |f| %>
-      <%= f.label :name, "ユーザー名" %>
-      <%= f.text_field :name %>
-      <%= f.label :introduction, "自己紹介" %>
-      <%= f.text_area :introduction %>
-      <%= f.label :email, "メールアドレス" %>
-      <%= f.text_field :email %>
-      <%= f.submit "更新する", class: "btn btn-sm btn-success" %>
+      <div class="form-group">
+        <%= f.label :name, "ユーザー名" %>
+        <%= f.text_field :name, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :introduction, "自己紹介" %>
+        <%= f.text_area :introduction, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :email, "メールアドレス" %>
+        <%= f.text_field :email, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.submit "更新する", class: "btn btn-sm btn-success" %>
+      </div>
     <% end %>
   </div>
   <div>

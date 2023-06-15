@@ -10,6 +10,7 @@ class Admin::EndUsersController < ApplicationController
   def update
     if @end_user.update(end_user_params)
       redirect_to admin_end_user_path(@end_user)
+      flash[:notice] = "ステータスを変更しました。"
     else
       render :edit
     end

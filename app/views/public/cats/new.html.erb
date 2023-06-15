@@ -1,5 +1,6 @@
 <div class="container">
   <h3>猫登録</h3>
+  <%= render "layouts/errors", obj: @cat %>
   <div class="row">
     <div>
       <%= form_with model: @cat do |f| %>
@@ -9,7 +10,7 @@
         </div>
         <div class="form-group">
           <%= f.label :name, "名前" %>
-          <%= f.text_field :name %>
+          <%= f.text_field :name, class: "form-control" %>
         </div>
         <div class="form-group">
           <%= f.label :sex, "性別" %>
@@ -22,11 +23,11 @@
         </div>
         <div class="form-group">
           <%= f.label :breed, "猫種" %>
-          <%= f.text_field :breed, placeholder: "任意" %>
+          <%= f.text_field :breed, placeholder: "任意", class: "form-control" %>
         </div>
         <div class="form-group">
           <%= f.label :introduction, "猫紹介" %>
-          <%= f.text_area :introduction, placeholder: "任意" %>
+          <%= f.text_area :introduction, placeholder: "任意", class: "form-control" %>
         </div>
         <div class="form-group">
           <%= f.submit "登録する", class: "btn btn-sm btn-success" %>
