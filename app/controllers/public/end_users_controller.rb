@@ -5,8 +5,8 @@ class Public::EndUsersController < ApplicationController
   before_action :permit_only_oneself, only: [:edit, :update]
 
   def show
-    @cats = @end_user.cats
-    @posts = @end_user.posts
+    @cats = @end_user.cats.page(params[:cat_page]).per(3)
+    @posts = @end_user.posts.order("created_at DESC").page(params[:post_page]).per(5)
   end
 
   def edit

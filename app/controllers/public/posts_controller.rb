@@ -24,13 +24,12 @@ class Public::PostsController < ApplicationController
 
   def index
     if params[:post] == "likes"
-      @posts = current_end_user.like_posts.order("created_at DESC")
+      @posts = current_end_user.like_posts.order("created_at DESC").page(params[:page])
     elsif params[:post] == "all"
-      @posts = Post.all.order("created_at DESC")
+      @posts = Post.all.order("created_at DESC").page(params[:page])
     else
-      cats = current_end_user.bookmark_cats
-      #bookmarkしている猫の投稿をそれぞれ加えたあと、投稿日時が新しい順で並び替えしている
-      @posts = cats.inject(init = []) {|result, cat| result + cat.posts}.sort_by(&:created_at).reverse
+      #自分の猫とブックマークしている猫のidを*で展開し、そのidとcat_idが一致する投稿をDBからもってくる
+      @posts = Post.where(cat_id: [*current_end_user.cat_ids, *current_end_user.bookmark_cat_ids]).order("created_at DESC").page(params[:page])
     end
   end
 

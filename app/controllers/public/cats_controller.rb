@@ -18,6 +18,7 @@ class Public::CatsController < ApplicationController
 
   def show
     @cat = Cat.find(params[:id])
+    @posts = @cat.posts.order("created_at DESC").page(params[:page])
   end
 
   def edit
