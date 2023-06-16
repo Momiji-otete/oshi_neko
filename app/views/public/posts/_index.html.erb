@@ -1,20 +1,22 @@
 <% posts.each do |post| %>
-  <div class="card">
+  <div class="card w-75 mx-auto mb-5 border-success h-100">
     <%= link_to post_path(post) do %>
-      <%= image_tag post.get_image(150,150), class: "card-img-top" %>
+      <%= image_tag post.get_image(500,300), class: "card-img-top" %>
     <% end %>
     <div class="card-body">
-      <div class="row">
-        <div class="col-4">
-          <%= link_to cat_path(post.cat) do %>
-            <%= image_tag post.cat.get_cat_image(100,100), class: "mt-3 rounded-circle" %>
-            <%= post.cat.name %>
-          <% end %>
-          <div class="bookmark-<%= post.cat_id %>">
+      <div class="row align-items-center">
+        <div class="col-4 align-items-center">
+          <div class="d-flex justify-content-center align-items-center">
+            <%= link_to cat_path(post.cat) do %>
+              <%= image_tag post.cat.get_cat_image(100,100), class: "cat-img cat-img-post" %>
+              <p class="text-center mt-2"><%= post.cat.name %></p>
+            <% end %>
+          </div>
+          <div class="bookmark-<%= post.cat_id %> text-center">
             <%= render "public/bookmarks/bookmarks_btn", cat: post.cat %>
           </div>
         </div>
-        <div class="col-8">
+        <div class="col-6 offset-1">
           <p class="card-title">
             <%= link_to post_path(post), class: "text-dark" do %>
               <strong><%= post.title %></strong>
