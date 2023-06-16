@@ -16,7 +16,13 @@
     <main class="mb-auto">
       <%= render "layouts/flash" %>
       <%= yield %>
+      <span id="back">
+        <%= link_to "#" do %>
+          <i class="fa-solid fa-paw"></i>
+        <% end %>
+      </span>
     </main>
     <%= render "layouts/footer" %>
+    <%= javascript_include_tag "top-button" %>
   </body>
 </html>
