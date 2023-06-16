@@ -5,7 +5,7 @@
   <% elsif params[:post] == "all" %>
     <p>みんなの投稿を表示中</p>
   <% else %>
-    <p>ブックマークした猫ちゃんの投稿を表示中</p>
+    <p>自分の猫ちゃんとブックマークした猫ちゃんの投稿を表示中</p>
   <% end %>
   <%= link_to "いいねした投稿", posts_path(post: "likes") %> | <%= link_to "みんなの投稿", posts_path(post: "all") %>
   <div class="row">

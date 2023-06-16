@@ -1,17 +1,18 @@
 class Public::EndUsersController < ApplicationController
+  before_action :authenticate_end_user!
   before_action :reject_guest_user, only: [:edit]
+  before_action :find_end_user, only: [:show, :edit, :update]
+  before_action :permit_only_oneself, only: [:edit, :update]
+
   def show
-    @end_user = EndUser.find(params[:id])
-    @cats = @end_user.cats
-    @posts = @end_user.posts
+    @cats = @end_user.cats.page(params[:cat_page]).per(3)
+    @posts = @end_user.posts.order("created_at DESC").page(params[:post_page]).per(5)
   end
 
   def edit
-    @end_user = EndUser.find(params[:id])
   end
 
   def update
-    @end_user = EndUser.find(params[:id])
     if @end_user.update(end_user_params)
       redirect_to end_user_path(current_end_user)
     else
@@ -35,8 +36,18 @@ class Public::EndUsersController < ApplicationController
     params.require(:end_user).permit(:name, :introduction, :email)
   end
 
-  def reject_guest_user
+  def find_end_user
     @end_user = EndUser.find(params[:id])
+  end
+
+  def permit_only_oneself #before_action :find_end_user
+    unless @end_user == current_end_user
+      redirect_to end_user_path(current_end_user)
+    end
+  end
+
+  def reject_guest_user
+    find_end_user
     if @end_user.name == "guestuser"
       flash[:notice] = "ゲストユーザーはプロフィール編集画面へ遷移できません。"
       redirect_to end_user_path(current_end_user)

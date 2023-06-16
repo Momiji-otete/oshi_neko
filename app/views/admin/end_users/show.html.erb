@@ -41,7 +41,7 @@
       <div class="row">
         <h5>猫ちゃん</h5>
         <div class="card-deck">
-          <% @end_user.cats.each do |cat| %>
+          <% @cats.each do |cat| %>
             <div class="card text-center">
               <div class="card-header">
                 <%#= link_to admin_cat_path(cat) do %>
@@ -53,6 +53,9 @@
               </div>
             </div>
           <% end %>
+        </div>
+        <div>
+          <%= paginate @cats, theme: 'bootstrap-5' %>
         </div>
       </div>
     </div>

@@ -39,6 +39,13 @@ ja:
         male: "♂"
         female: "♀"
 
+  views:
+    pagination:
+      first: <i class="fa-solid fa-angles-left"></i>
+      previous: <i class="fa-solid fa-angle-left"></i>
+      next: <i class="fa-solid fa-angle-right"></i>
+      last: <i class="fa-solid fa-angles-right"></i>
+
   devise:
     failure:
       already_authenticated: "既にログイン済みです。"

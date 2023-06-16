@@ -38,7 +38,7 @@
       </div>
       <div class="row">
         <h5><%= @cat.name %>ちゃんの投稿</h5>
-        <% @cat.posts.each do |post| %>
+        <% @posts.each do |post| %>
           <div class="card w-50 mx-auto mt-4 shadow-sm">
             <%= link_to post_path(post.id) do %>
               <%= image_tag post.get_image(200,200), class: "card-img-top" %>
@@ -62,6 +62,9 @@
             </div>
           </div>
         <% end %>
+        <div>
+          <%= paginate @posts, theme: 'bootstrap-5' %>
+        </div>
       </div>
     </div>
   </div>

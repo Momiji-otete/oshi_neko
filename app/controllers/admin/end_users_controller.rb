@@ -1,7 +1,9 @@
 class Admin::EndUsersController < ApplicationController
+  before_action :authenticate_admin!
   before_action :find_end_user, only: [:show, :edit, :update]
 
   def show
+    @cats = @end_user.cats.page(params[:page]).per(3)
   end
 
   def edit
@@ -18,6 +20,7 @@ class Admin::EndUsersController < ApplicationController
 
   def posts_index
     @end_user = EndUser.find(params[:end_user_id])
+    @posts = @end_user.posts.page(params[:page])
   end
 
 
