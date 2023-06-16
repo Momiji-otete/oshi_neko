@@ -1,8 +1,10 @@
 class Admin::HomesController < ApplicationController
+  before_action :authenticate_admin!
+
   def top
     @end_users = EndUser.all
   end
-  
+
   def search
     @model = params[:model]
     @search_word = params[:search_word]

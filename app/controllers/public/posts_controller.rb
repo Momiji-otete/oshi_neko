@@ -1,4 +1,8 @@
 class Public::PostsController < ApplicationController
+  before_action :authenticate_end_user!
+  before_action :find_post, only: [:show, :edit, :update, :destroy]
+  before_action :permit_only_oneself, only: [:edit, :update]
+
   def new
     @post = Post.new
     #猫を登録していない状態だと猫登録に遷移させる
@@ -31,17 +35,14 @@ class Public::PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find(params[:id])
     @post_comment = Comment.new
   end
 
   def edit
-    @post = Post.find(params[:id])
     @tag_list = @post.tags.pluck(:name).join(',')
   end
 
   def update
-    @post = Post.find(params[:id])
     tag_list = params[:post][:tag_name].split(',')
     if @post.update(post_params)
       @post.save_tags(tag_list)
@@ -53,13 +54,25 @@ class Public::PostsController < ApplicationController
   end
 
   def destroy
-    Post.find(params[:id]).destroy
+    @post.destroy
     flash[:warning] = "投稿を削除しました。"
     redirect_to posts_path
   end
 
   private
+
   def post_params
     params.require(:post).permit(:title, :body, :cat_id, :image)
+  end
+
+  def find_post
+    @post = Post.find(params[:id])
+  end
+
+  def permit_only_oneself
+    end_user = @post.end_user
+    unless end_user == current_end_user
+      redirect_to posts_path
+    end
   end
 end

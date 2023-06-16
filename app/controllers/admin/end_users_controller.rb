@@ -1,4 +1,5 @@
 class Admin::EndUsersController < ApplicationController
+  before_action :authenticate_admin!
   before_action :find_end_user, only: [:show, :edit, :update]
 
   def show
