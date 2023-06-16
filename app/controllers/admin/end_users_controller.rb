@@ -3,6 +3,7 @@ class Admin::EndUsersController < ApplicationController
   before_action :find_end_user, only: [:show, :edit, :update]
 
   def show
+    @cats = @end_user.cats.page(params[:page]).per(3)
   end
 
   def edit

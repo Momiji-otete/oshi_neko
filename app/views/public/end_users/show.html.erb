@@ -34,7 +34,7 @@
         <% end %>
       </div>
       <div>
-        <%= paginate @cats, param_name: "cat_page" %>
+        <%= paginate @cats, param_name: "cat_page", theme: 'bootstrap-5' %>
       </div>
     </div>
     <div>
@@ -72,7 +72,7 @@
       <% end %>
     </div>
     <div>
-      <%= paginate @posts, param_name: "post_page" %>
+      <%= paginate @posts, param_name: "post_page", theme: 'bootstrap-5' %>
     </div>
   </div>
 </div>
