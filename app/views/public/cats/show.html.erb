@@ -2,27 +2,27 @@
 
       <h3 class="mt-5">猫詳細</h3>
       <div class="row">
-        <div class="col-10 mx-auto">
+        <div class="col-9 mx-auto">
           <div class="d-flex justify-content-center">
             <%= image_tag @cat.get_cat_image(200,200), class: "cat-img cat-img-main my-5" %>
           </div>
           <table class="table table-borderless">
             <tbody>
               <tr>
-                <td class="align-middle">名前</td>
+                <td class="col-3">名前</td>
                 <td class="align-middle"><%= @cat.name %></td>
               </tr>
               <tr>
-                <td class="align-middle">性別</td>
+                <td>性別</td>
                 <td class="align-middle"><%= @cat.sex_i18n %></td>
               </tr>
               <tr>
-                <td class="align-middle">猫種</td>
+                <td>猫種</td>
                 <td class="align-middle"><%= @cat.breed %></td>
               </tr>
               <tr>
-                <td class="align-middle">猫紹介</td>
-                <td class="align-middle"><%= @cat.introduction %></td>
+                <td>猫紹介</td>
+                <td class="align-middle text-break"><%= @cat.introduction %></td>
               </tr>
               <tr>
                 <td class="align-middle">ご主人様</td>
