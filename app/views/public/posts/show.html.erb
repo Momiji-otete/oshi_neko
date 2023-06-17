@@ -2,13 +2,13 @@
   <h3 class="my-5">投稿詳細</h3>
   <div class="row">
     <div class="card w-75 mx-auto">
-      <%= image_tag @post.get_image(200,200), class: "card-img-top" %>
+      <%= image_tag @post.get_image(800,600), class: "card-img-top" %>
       <div class="card-body">
         <div class="row align-items-center">
           <div class="col-4">
             <div class="d-flex justify-content-center">
               <%= link_to cat_path(@post.cat) do %>
-                <%= image_tag @post.cat.get_cat_image(150,150), class: "cat-img cat-img-post" %><br>
+                <%= image_tag @post.cat.get_cat_image(200,200), class: "cat-img cat-img-post" %><br>
                 <p class="text-center mt-2"><%= @post.cat.name %></p>
               <% end %>
             </div>
