@@ -2,14 +2,14 @@
 <% posts.each do |post| %>
   <div class="card w-75 mx-auto mb-5 border-success">
     <%= link_to post_path(post) do %>
-      <%= image_tag post.get_image(500,300), class: "card-img-top" %>
+      <%= image_tag post.get_image(800,600), class: "card-img-top" %>
     <% end %>
     <div class="card-body">
       <div class="row align-items-center">
-        <div class="col-4 align-items-center">
-          <div class="d-flex justify-content-center align-items-center">
+        <div class="col-4">
+          <div class="d-flex justify-content-center">
             <%= link_to cat_path(post.cat) do %>
-              <%= image_tag post.cat.get_cat_image(100,100), class: "cat-img cat-img-post" %>
+              <%= image_tag post.cat.get_cat_image(200,200), class: "cat-img cat-img-post" %>
               <p class="text-center mt-2"><%= post.cat.name %></p>
             <% end %>
           </div>
