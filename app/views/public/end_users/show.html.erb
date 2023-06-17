@@ -1,7 +1,7 @@
 <div class="container">
   <h3 class="mt-5">ユーザー詳細</h3>
   <div class="row mt-5">
-    <div class="col">
+    <div class="col-10 offset-1">
       <p>ユーザー名</p>
       <p class="pl-5"><%= @end_user.name %></p>
       <p>自己紹介</p>
@@ -13,9 +13,9 @@
       </div>
     </div>
   </div>
+  <h5 class="my-5"><%= @end_user.name%>さんの猫ちゃん</h5>
   <div class="row mt-5">
-    <div class="col">
-      <h5 class="my-5"><%= @end_user.name%>さんの猫ちゃん</h5>
+    <div class="col-10 offset-1">
       <div class="row row-cols-1 row-cols-sm-3">
         <% @cats.each do |cat| %>
           <div class="col">
