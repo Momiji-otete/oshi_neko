@@ -1,17 +1,17 @@
 <div class="container">
   <div class="row">
     <div class="col">
-      <h3>ランキング</h3>
+      <h3 class="mt-5">ランキング</h3>
       <p>ブックマーク数のランキング</p>
       <table class="table">
         <thead>
           <tr>
             <th></th>
             <th></th>
-            <th>名前</th>
-            <th>猫種</th>
-            <th>ブックマーク数</th>
-            <th>投稿数</th>
+            <th class="align-middle">名前</th>
+            <th class="align-middle">猫種</th>
+            <th class="align-middle">ブックマーク数</th>
+            <th class="align-middle">投稿数</th>
           </tr>
         </thead>
         <tbody>
@@ -19,15 +19,15 @@
           <% @cats.each do |cat| %>
             <tr>
               <td><%= num %></td>
-              <td><%= image_tag cat.get_cat_image(100,100), class: "rounded-circle" %></td>
-              <td>
+              <td class="align-middle"><%= image_tag cat.get_cat_image(200,200), class: "cat-img cat-img-post" %></td>
+              <td class="align-middle">
                 <%= link_to cat_path(cat) do %>
                   <%= cat.name %>
                 <% end %>
               </td>
-              <td><%= cat.breed %></td>
-              <td><%= cat.bookmarks.count %>ブックマーク</td>
-              <td><%= cat.posts.count %>投稿</td>
+              <td class="align-middle"><%= cat.breed %></td>
+              <td class="align-middle"><%= cat.bookmarks.count %>ブックマーク</td>
+              <td class="align-middle"><%= cat.posts.count %>投稿</td>
             </tr>
             <% num += 1 %>
           <% end %>
