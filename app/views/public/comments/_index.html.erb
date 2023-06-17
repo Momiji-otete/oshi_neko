@@ -7,7 +7,7 @@
           <%= comment.end_user.name %>
         <% end %>
       </p>
-      <p><%= comment.comment_content %></p>
+      <p class="text-break"><%= comment.comment_content %></p>
       <div class="d-flex justify-content-end">
       <% if comment.end_user == current_end_user %>
         <%= link_to "削除", post_comment_path(post, comment), method: :delete, remote: true, class: "btn btn-danger" %>

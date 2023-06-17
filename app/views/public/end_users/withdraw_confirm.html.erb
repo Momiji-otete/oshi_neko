@@ -1,10 +1,12 @@
 <div class="container">
-  <div class="row">
-    <h5>本当に退会しますか?</h5>
-    <p>退会する場合は、「退会する」をクリックしてください。</p>
-  </div>
-  <div>
-    <%= link_to "退会しない", end_user_path(current_end_user), class: "btn btn-sm btn-primary" %>
-    <%= link_to "退会する", end_users_withdraw_path, method: :patch, "data-confirm" => "本当に退会しますか？", class: "btn btn-sm btn-danger" %>
+  <div class="row my-5">
+    <div class="col-10 mx-auto text-center">
+      <h5 class="my-5">本当に退会しますか?</h5>
+      <p>退会する場合は、「退会する」をクリックしてください。</p>
+      <div class="d-flex justify-content-center">
+        <%= link_to "退会しない", end_user_path(current_end_user), class: "btn btn-primary mr-5" %>
+        <%= link_to "退会する", end_users_withdraw_path, method: :patch, "data-confirm" => "本当に退会しますか？", class: "btn btn-danger" %>
+      </div>
+    </div>
   </div>
 </div>

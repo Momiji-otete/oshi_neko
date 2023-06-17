@@ -1,21 +1,21 @@
 <div class="container">
   <h3 class="mt-5">ユーザー詳細</h3>
-  <div class="row">
-    <div>
+  <div class="row mt-5">
+    <div class="col">
       <p>ユーザー名</p>
-      <p><%= @end_user.name %></p>
+      <p class="pl-5"><%= @end_user.name %></p>
       <p>自己紹介</p>
-      <p><%= @end_user.introduction %></p>
-      <div>
+      <div class="pl-5 text-break"><%= @end_user.introduction %></div>
+      <div class="d-flex justify-content-end">
         <% if @end_user == current_end_user %>
-          <%= link_to "編集する", edit_end_user_path(@end_user), class: "btn btn-sm btn-success" %>
+          <%= link_to "編集する", edit_end_user_path(@end_user), class: "btn btn-success mt-3" %>
         <% end %>
       </div>
     </div>
   </div>
-  <div class="row">
+  <div class="row mt-5">
     <div class="col">
-      <h5><%= @end_user.name%>さんの猫ちゃん</h5>
+      <h5 class="my-5"><%= @end_user.name%>さんの猫ちゃん</h5>
       <div class="row row-cols-1 row-cols-sm-3">
         <% @cats.each do |cat| %>
           <div class="col">
@@ -47,7 +47,7 @@
   </div>
   <div class="row mt-5">
     <div class="col">
-      <h5><%= @end_user.name%>さんの投稿</h5>
+      <h5 class="my-5"><%= @end_user.name%>さんの投稿</h5>
       <%= render "public/posts/index", posts: @posts %>
     </div>
   </div>
