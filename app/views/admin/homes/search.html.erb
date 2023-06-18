@@ -1,13 +1,25 @@
 <div class="container">
-  <div class="row">
-    <div class="col">
-      <% if @model == "end_user" %>
-        <h3>ユーザー検索</h3>
-        <%= render "admin/end_users/index", end_users: @results %>
-      <% else %> <!-- model == ("post" || "tag") -->
-        <h3>投稿検索</h3>
-        <%= render "admin/posts/index", posts: @results %>
-      <% end %>
+  <% if @model == "end_user" %>
+    <h3 class="mt-5">ユーザー検索</h3>
+    <div class="row mt-3">
+      <div class="col">
+        <% if @results.present? %>
+          <%= render "admin/end_users/index", end_users: @results %>
+        <% else %>
+          <p>ユーザーはいません。</p>
+        <% end %>
+      </div>
     </div>
-  </div>
+  <% else %> <!-- model == ("post" || "tag") -->
+    <h3 class="mt-5">投稿検索</h3>
+    <div class="row mt-3">
+      <div class="col">
+        <% if @results.present? %>
+          <%= render "admin/posts/index", posts: @results %>
+        <% else %>
+          <p>投稿はありません。</p>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
 </div>
