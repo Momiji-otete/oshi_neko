@@ -1,31 +1,29 @@
 <table class="table table-bordered">
   <thead>
     <tr>
-      <th>ID</th>
-      <th>ユーザー名</th>
-      <th>ステータス</th>
+      <th class="align-middle">ID</th>
+      <th class="align-middle">ユーザー名</th>
+      <th class="align-middle">ステータス</th>
     </tr>
   </thead>
   <tbody>
     <% end_users.each do |end_user| %>
       <tr>
-        <td><%= end_user.id %></td>
-        <td>
+        <td class="align-middle"><%= end_user.id %></td>
+        <td class="align-middle">
           <%= link_to admin_end_user_path(end_user) do %>
             <%= end_user.name %>
           <% end %>
         </td>
-        <td>
-          <% if end_user.is_deleted == false %>
-            <p class="text-success">有効</p>
-          <% else %>
-            <p class="text-secondary">退会</p>
-          <% end %>
-        </td>
+        <% if end_user.is_deleted == false %>
+          <td class="text-success align-middle">有効</td>
+        <% else %>
+          <td class="text-secondary align-middle">退会</td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
-<div>
+<div class="d-flex justify-content-center">
   <%= paginate end_users, theme: 'bootstrap-5' %>
 </div>

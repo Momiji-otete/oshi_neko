@@ -10,11 +10,11 @@ class Admin::HomesController < ApplicationController
     @search_word = params[:search_word]
     @method = params[:method]
     if @model == "end_user"
-      @results = EndUser.search_for(@search_word, @method)
+      @results = EndUser.search_for(@search_word, @method).page(params[:page])
     elsif @model == "post"
-      @results = Post.search_for(@search_word, @method)
+      @results = Post.search_for(@search_word, @method).page(params[:page])
     else #"tag"
-      @results = Tag.search_books_for(@search_word, @method)
+      @results = Tag.search_books_for(@search_word, @method).page(params[:page])
     end
   end
 end
