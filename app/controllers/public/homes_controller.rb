@@ -2,7 +2,7 @@ class Public::HomesController < ApplicationController
   before_action :authenticate_end_user!, only: :search
 
   def top
-    if Cat.first.exists?
+    if Cat.first.present?
       @rand_cats = Cat.where('id >= ?', rand(Cat.first.id..Cat.last.id)).limit(3)
     else
       @rand_cats = []
