@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
-    <div class="col">
-      <h3>管理者ログイン</h3>
+    <div class="col-10">
+      <h3 class="my-5">管理者ログイン</h3>
       <%= render "layouts/errors", obj: @admin %>
       <%= form_with model: @admin, url: admin_session_path do |f| %>
         <div class="form-group">
@@ -17,7 +17,7 @@
               </tr>
               <tr>
                 <td></td>
-                <td colspan="2"><%= f.submit "ログイン", class: "btn btn-primary" %></td>
+                <td colspan="2"><%= f.submit "ログイン", class: "btn btn-lg btn-primary mt-3" %></td>
               </tr>
             </tbody>
           </table>
