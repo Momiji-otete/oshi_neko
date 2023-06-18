@@ -1,10 +1,8 @@
 <div class="container">
-  <div class="row">
+  <h3 class="mt-5"><%= @end_user.name %>さんの投稿一覧</h3>
+  <div class="row mt-3">
     <div class="col">
-      <h3><%= @end_user.name %>さんの投稿一覧</h3>
-      <div class="row">
-        <%= render "admin/posts/index", posts: @posts %>
-      </div>
+      <%= render "admin/posts/index", posts: @posts %>
     </div>
   </div>
 </div>

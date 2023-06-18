@@ -1,41 +1,41 @@
 <div class="row">
-<% posts.each do |post| %>
-  <div class="card w-75 mx-auto mb-5 border-success">
-    <%= link_to post_path(post) do %>
-      <%= image_tag post.get_image(800,600), class: "card-img-top" %>
-    <% end %>
-    <div class="card-body">
-      <div class="row align-items-center">
-        <div class="col-4">
-          <div class="d-flex justify-content-center">
-            <%= link_to cat_path(post.cat) do %>
-              <%= image_tag post.cat.get_cat_image(200,200), class: "cat-img cat-img-post" %>
-              <p class="text-center mt-2"><%= post.cat.name %></p>
-            <% end %>
+  <% posts.each do |post| %>
+    <div class="card w-75 mx-auto mb-5 border-success">
+      <%= link_to post_path(post) do %>
+        <%= image_tag post.get_image(800,600), class: "card-img-top" %>
+      <% end %>
+      <div class="card-body">
+        <div class="row align-items-center">
+          <div class="col-4">
+            <div class="d-flex justify-content-center">
+              <%= link_to cat_path(post.cat) do %>
+                <%= image_tag post.cat.get_cat_image(200,200), class: "cat-img cat-img-post" %>
+                <p class="text-center mt-2"><%= post.cat.name %></p>
+              <% end %>
+            </div>
+            <div class="bookmark-<%= post.cat_id %> text-center">
+              <%= render "public/bookmarks/bookmarks_btn", cat: post.cat %>
+            </div>
           </div>
-          <div class="bookmark-<%= post.cat_id %> text-center">
-            <%= render "public/bookmarks/bookmarks_btn", cat: post.cat %>
+          <div class="col-6 offset-1">
+            <p class="card-title">
+              <%= link_to post_path(post), class: "text-dark" do %>
+                <strong><%= post.title %></strong>
+              <% end %>
+            </p>
+            <p>
+              <%= render "public/posts/tag_link", post: post %>
+            </p>
+            <div class="like-<%= post.id %>">
+              <%= render "public/likes/likes_btn", post: post %>
+            </div>
+            <p><%= post.comments.count %>コメント</p>
+            <span><%= post.created_at.strftime('%Y/%m/%d') %></span>
           </div>
-        </div>
-        <div class="col-6 offset-1">
-          <p class="card-title">
-            <%= link_to post_path(post), class: "text-dark" do %>
-              <strong><%= post.title %></strong>
-            <% end %>
-          </p>
-          <p>
-            <%= render "public/posts/tag_link", post: post %>
-          </p>
-          <div class="like-<%= post.id %>">
-            <%= render "public/likes/likes_btn", post: post %>
-          </div>
-          <p><%= post.comments.count %>コメント</p>
-          <span><%= post.created_at.strftime('%Y/%m/%d') %></span>
         </div>
       </div>
     </div>
-  </div>
-<% end %>
+  <% end %>
 </div>
 <div class="row justify-content-center">
   <%= paginate posts, theme: 'bootstrap-5' %>
