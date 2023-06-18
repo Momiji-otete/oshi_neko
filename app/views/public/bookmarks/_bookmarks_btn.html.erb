@@ -3,9 +3,11 @@
     <%= link_to cat_bookmarks_path(cat), method: :delete, remote: true do %>
       <i class="fa-solid fa-star"></i>
     <% end %>
+    <%= cat.bookmarks.count %>
   <% else %>
     <%= link_to cat_bookmarks_path(cat), method: :post, remote: true do %>
       <i class="fa-regular fa-star"></i>
     <% end %>
+    <%= cat.bookmarks.count %>
   <% end %>
 <% end %>

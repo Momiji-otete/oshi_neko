@@ -1,0 +1,31 @@
+<%= form_with model: cat do |f| %>
+  <%= render "layouts/errors", obj: cat %>
+  <div class="form-group">
+    <%= f.label :cat_image, "画像" %><br>
+    <%= f.file_field :cat_image, accept: "image/*" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :name, "名前" %>
+    <%= f.text_field :name, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :sex, "性別" %><br>
+    <%= f.radio_button :sex, Cat.sexes.key(1), class: "ml-5" %>
+    <%= f.label :sex, Cat.sexes_i18n[:male], class: "ml-2" %> <!-- オス -->
+    <%= f.radio_button :sex, Cat.sexes.key(2), class: "ml-5" %>
+    <%= f.label :sex, Cat.sexes_i18n[:female], class: "ml-2" %> <!-- メス -->
+    <%= f.radio_button :sex, Cat.sexes.key(0), checked: true, class: "ml-5" %>
+    <%= f.label :sex, Cat.sexes_i18n[:unanswered], class: "ml-2" %> <!-- 未回答 -->
+  </div>
+  <div class="form-group">
+    <%= f.label :breed, "猫種" %>
+    <%= f.text_field :breed, placeholder: "任意", class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :introduction, "猫紹介" %>
+    <%= f.text_area :introduction, rows: "4", placeholder: "任意、200文字以内", class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.submit submit, class: "btn btn-success float-right" %>
+  </div>
+<% end %>

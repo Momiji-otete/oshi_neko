@@ -2,13 +2,13 @@
   <div class="row">
     <div class="col">
       <% if @model == "cat" %>
-        <h3>猫検索</h3>
+        <h3 class="my-5">猫検索</h3>
         <%= render "public/cats/index", cats: @results %>
       <% elsif @model == "post" %>
-        <h3>投稿検索結果</h3>
+        <h3 class="my-5">投稿検索結果</h3>
         <%= render "public/posts/index", posts: @results %>
       <% elsif @model == "tag" %>
-        <h3>タグ検索結果</h3>
+        <h3 class="my-5">タグ検索結果</h3>
         <%= render "public/posts/index", posts: @results %>
       <% end %>
     </div>

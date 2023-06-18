@@ -1,78 +1,54 @@
 <div class="container">
-  <h3>ユーザー詳細</h3>
-  <div class="row">
-    <div>
+  <h3 class="mt-5">ユーザー詳細</h3>
+  <div class="row mt-5">
+    <div class="col-10 offset-1">
       <p>ユーザー名</p>
-      <p><%= @end_user.name %></p>
+      <p class="pl-5"><%= @end_user.name %></p>
       <p>自己紹介</p>
-      <p><%= @end_user.introduction %></p>
-    </div>
-    <div>
-      <% if @end_user == current_end_user %>
-        <%= link_to "編集する", edit_end_user_path(@end_user), class: "btn btn-sm btn-success" %>
-      <% end %>
+      <div class="pl-5 text-break"><%= @end_user.introduction %></div>
+      <div class="d-flex justify-content-end">
+        <% if @end_user == current_end_user %>
+          <%= link_to "編集する", edit_end_user_path(@end_user), class: "btn btn-success mt-3" %>
+        <% end %>
+      </div>
     </div>
   </div>
-  <div class="row">
-    <h5>猫ちゃん</h5>
-    <div>
-      <div class="card-deck">
+  <h5 class="my-5"><%= @end_user.name%>さんの猫ちゃん</h5>
+  <div class="row mt-5">
+    <div class="col-10 offset-1">
+      <div class="row row-cols-1 row-cols-sm-3">
         <% @cats.each do |cat| %>
-          <div class="card text-center">
-            <div class="card-header">
-              <%= link_to cat_path(cat) do %>
-                <%= image_tag cat.get_cat_image(100,100), class: "mt-3 rounded-circle" %>
-              <% end %>
-            </div>
-            <div>
-              <%= cat.name %>
-              <div class="bookmark-<%= cat.id %>">
-                <%= render "public/bookmarks/bookmarks_btn", cat: cat %>
+          <div class="col">
+            <div class="card text-center">
+              <div class="card-header">
+                <%= link_to cat_path(cat) do %>
+                  <%= image_tag cat.get_cat_image(200,200), class: "cat-img cat-img-user" %>
+                <% end %>
+              </div>
+              <div class="py-2">
+                <%= cat.name %>
+                <div class="bookmark-<%= cat.id %>">
+                  <%= render "public/bookmarks/bookmarks_btn", cat: cat %>
+                </div>
               </div>
             </div>
           </div>
         <% end %>
       </div>
-      <div>
+      <div class="d-flex justify-content-center mt-3">
         <%= paginate @cats, param_name: "cat_page", theme: 'bootstrap-5' %>
       </div>
-    </div>
-    <div>
-      <% if @end_user == current_end_user %>
-        <%= link_to "猫登録", new_cat_path, class: "btn btn-sm btn-primary" %>
-      <% end %>
+      <div class="d-flex justify-content-end">
+        <% if @end_user == current_end_user %>
+          <%= link_to "猫登録", new_cat_path, class: "btn btn-primary mt-3" %>
+        <% end %>
+      </div>
     </div>
   </div>
-  <div class="row">
-    <h5><%= @end_user.name%>さんの投稿</h5>
-    <div>
-      <% @posts.each do |post| %>
-        <div class="card mt-4 shadow-sm">
-          <%= link_to post_path(post.id) do %>
-            <%= image_tag post.get_image(200,200), class: "card-img-top" %>
-          <% end %>
-          <div class="card-body">
-            <div class="row">
-              <div class="col-4">
-                <%= link_to cat_path(post.cat.id) do %>
-                  <%= image_tag post.cat.get_cat_image(100,100), class: "mt-3 rounded-circle" %>
-                  <%= post.cat.name %>
-                <% end %>
-              </div>
-              <div class="col-8">
-                <p class="card-title">
-                  <%= link_to post_path(post.id), class: "text-dark" do %>
-                    <strong><%= post.title %></strong>
-                  <% end %>
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      <% end %>
-    </div>
-    <div>
-      <%= paginate @posts, param_name: "post_page", theme: 'bootstrap-5' %>
+  <div class="row mt-5">
+    <div class="col">
+      <h5 class="my-5"><%= @end_user.name%>さんの投稿</h5>
+      <%= render "public/posts/index", posts: @posts %>
     </div>
   </div>
 </div>

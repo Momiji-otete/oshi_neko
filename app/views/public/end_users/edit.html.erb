@@ -1,7 +1,8 @@
 <div class="container">
-  <h3>ユーザー編集</h3>
+  <h3 class="mt-5">ユーザー編集</h3>
   <%= render "layouts/errors", obj: @end_user %>
-  <div class="row">
+  <div class="row justify-content-center">
+    <div class="col-8 mt-5">
     <%= form_with model: @end_user do |f| %>
       <div class="form-group">
         <%= f.label :name, "ユーザー名" %>
@@ -9,18 +10,21 @@
       </div>
       <div class="form-group">
         <%= f.label :introduction, "自己紹介" %>
-        <%= f.text_area :introduction, class: "form-control" %>
+        <%= f.text_area :introduction, rows: '4', placeholder: "500文字以内", class: "form-control" %>
       </div>
       <div class="form-group">
         <%= f.label :email, "メールアドレス" %>
         <%= f.text_field :email, class: "form-control" %>
       </div>
       <div class="form-group">
-        <%= f.submit "更新する", class: "btn btn-sm btn-success" %>
+        <%= f.submit "更新する", class: "btn btn-success float-right" %>
       </div>
     <% end %>
+    </div>
   </div>
-  <div>
-    <%= link_to "退会する", withdraw_confirm_path, class: "btn btn-sm btn-danger" %>
+  <hr>
+  <p class="my-5">退会する場合はこちら</p>
+  <div class="d-flex justify-content-center">
+    <%= link_to "退会する", withdraw_confirm_path, class: "btn btn-danger" %>
   </div>
 </div>

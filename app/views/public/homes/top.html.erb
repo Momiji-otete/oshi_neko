@@ -1,51 +1,62 @@
 <div class="container">
-  <div class="row">
-    <div class="col">
-      <div class="row">
-        <h3>お勧めの猫</h3>
+  <div class="row justify-content-center">
+    <div class="col-11 col-sm-10 col-lg-8 col-xl-6">
+      <h1 class="my-5">ようこそ推し猫へ！！</h1>
+      <p>推し猫では、みんなが投稿した猫を見たり、</p>
+      <p>自分が飼っている猫を投稿することができます。</p>
+      <p>あなたも猫を見たり、投稿したりしてみませんか？</p>
+      <div class="btn-wrapper col-11 col-sm-10 col-lg-8 col-xl-6 mt-5">
+        <div class="row">
+          <%= link_to "ログイン",new_end_user_session_path, class: "btn btn-info btn-sm btn-block mb-3" %>
+        </div>
+        <div class="row">
+          <%= link_to "新規登録",new_end_user_registration_path, class: "btn btn-success btn-sm btn-block" %>
+        </div>
       </div>
-      <div class="row">
-        <div class="card-deck">
-          <% @rand_cats.each do |cat| %>
-            <div class="card">
+    </div>
+  </div>
+  <h3 class="my-5">お勧めの猫</h3>
+  <div class="row">
+    <div class="col-8 offset-1">
+      <div class="row row-cols-1 row-cols-sm-3">
+        <% @rand_cats.each do |cat| %>
+          <div class="col">
+            <div class="card text-center pt-2 mb-2">
               <%= link_to cat_path(cat) do %>
-                <%= image_tag cat.get_cat_image(100,100), class: "card-img-top rounded-circle" %>
+                <%= image_tag cat.get_cat_image(200,200), class: "cat-img cat-img-user" %>
               <% end %>
-              <p><%= cat.name %></p>
+              <p class="mt-2"><%= cat.name %></p>
               <p>
                 ブックマーク数:
                 <%= cat.bookmarks.count %>
               </p>
             </div>
-          <% end %>
-        </div>
+          </div>
+        <% end %>
       </div>
-      <div class="row">
-        <h3>最近の投稿</h3>
-      </div>
-      <div class="row">
-        <div class="card-deck">
-          <% @posts.each do |post| %>
-            <div class="card">
-              <%= image_tag post.get_image(120,200), class: "card-img-top" %>
-              <div class="card-body">
-                <div class="row">
-                  <div class="col-4">
-                    <%= image_tag post.cat.get_cat_image(80,80), class: "rounded-circle" %>
-                    <%= post.cat.name %>
-                  </div>
-                  <div class="col-8">
-                    <%= post.title %>
-                    <p><%= post.likes.count %>いいね</p>
-                    <%= post.comments.count %>コメント
-                  </div>
+    </div>
+  </div>
+  <h3 class="my-5">最近の投稿</h3>
+  <div class="row row-cols-1 row-cols-lg-3">
+      <% @posts.each do |post| %>
+        <div class="col mb-2">
+          <div class="card h-100">
+            <%= image_tag post.get_image(400,300), class: "card-img-top" %>
+            <div class="card-body">
+              <div class="row">
+                <div class="col-4 text-center">
+                  <%= image_tag post.cat.get_cat_image(200,200), class: "cat-img cat-img-user" %>
+                  <p><%= post.cat.name %></p>
+                </div>
+                <div class="col-8">
+                  <p><%= post.title %></p>
+                  <p><%= post.likes.count %>いいね</p>
+                  <p><%= post.comments.count %>コメント</p>
                 </div>
               </div>
             </div>
-          <% end %>
+          </div>
         </div>
-
-      </div>
-    </div>
+      <% end %>
   </div>
 </div>

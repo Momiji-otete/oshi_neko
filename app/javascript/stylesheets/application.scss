@@ -6,3 +6,37 @@
     height: 300px;
   }
 }
+
+.cat-img {
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.cat-img-user {
+  width: 100px;
+  height: 100px;
+}
+
+.cat-img-post {
+  width: 150px;
+  height: 150px;
+
+  @media screen and (max-width: 768px) {
+    width: 100px;
+    height: 100px;
+  }
+
+  @media screen and (max-width: 425px) {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+.cat-img-main {
+  width: 200px;
+  height: 200px;
+}
+
+.fa-star {
+  font-size: 30px;
+}

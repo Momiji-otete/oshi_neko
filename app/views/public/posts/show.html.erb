@@ -1,50 +1,60 @@
 <div class="container">
-  <h3>投稿詳細</h3>
+  <h3 class="my-5">投稿詳細</h3>
   <div class="row">
-    <div class="card">
-      <%= image_tag @post.get_image(200,200), class: "card-img-top" %>
+    <div class="card w-75 mx-auto">
+      <%= image_tag @post.get_image(800,600), class: "card-img-top" %>
       <div class="card-body">
-        <div class="row">
+        <div class="row align-items-center">
           <div class="col-4">
-            <%= link_to cat_path(@post.cat) do %>
-              <%= image_tag @post.cat.get_cat_image(80,120), class: "mt-3 rounded-circle" %><br>
-              <%= @post.cat.name %>
-            <% end %>
-            <div class="bookmark-<%= @post.cat_id %>">
+            <div class="d-flex justify-content-center">
+              <%= link_to cat_path(@post.cat) do %>
+                <%= image_tag @post.cat.get_cat_image(200,200), class: "cat-img cat-img-post" %><br>
+                <p class="text-center mt-2"><%= @post.cat.name %></p>
+              <% end %>
+            </div>
+            <div class="bookmark-<%= @post.cat_id %> text-center">
               <%= render "public/bookmarks/bookmarks_btn", cat: @post.cat %>
             </div>
           </div>
           <div class="col-8">
-            <p class="card-title">
-              <strong><%= @post.title %></strong>
+            <p>タイトル</p>
+            <p class="card-title pl-3">
+              <%= @post.title %>
             </p>
-            <p class="card-text">
+            <p>内容</p>
+            <p class="card-text pl-3 text-break">
               <%= @post.body %>
             </p>
-            <p>
+            <p>タグ</p>
+            <div class="ml-3">
               <%= render "tag_link", post: @post %>
-            </p>
-            <div class="like-<%= @post.id %>">
+            </div>
+            <div class="like-<%= @post.id %> mt-3">
               <%= render "public/likes/likes_btn", post: @post %>
             </div>
             <span><%= @post.created_at.strftime('%Y/%m/%d') %></span>
+            <div class="row justify-content-end">
+              <% if @post.end_user == current_end_user %>
+                <%= link_to "編集する", edit_post_path(@post), class: "btn btn-sm btn-success mr-3" %>
+                <%= link_to "削除する", post_path(@post), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-sm btn-danger" %>
+              <% end %>
+            </div>
           </div>
         </div>
       </div>
     </div>
-    <div>
-      <% if @post.end_user == current_end_user %>
-        <%= link_to "編集する", edit_post_path(@post), class: "btn btn-sm btn-success" %>
-        <%= link_to "削除する", post_path(@post), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-sm btn-danger" %>
-      <% end %>
+  </div>
+  <h5 class="comment-count mt-5"><%= render "public/comments/comment_count", post: @post %></h5>
+  <div class="row justify-content-center">
+    <div class="col-lg-6">
+      <div class="comment-index">
+        <%= render "public/comments/index", post: @post %>
+      </div>
     </div>
   </div>
-  <div class="row">
-    <div class="comment-index">
-      <%= render "public/comments/index", post: @post %>
+  <div class="row justify-content-center">
+    <div class="col-lg-6">
+      <%= render "public/comments/form", post: @post, post_comment: @post_comment %>
     </div>
-  </div>
-  <div class="row">
-    <%= render "public/comments/form", post: @post, post_comment: @post_comment %>
   </div>
 </div>
