@@ -1,6 +1,8 @@
 class Public::CatsController < ApplicationController
-  before_action :authenticate_end_user!
+  before_action :authenticate_end_user!, except: :show
+  before_action :find_cat, only: [:show, :edit, :update]
   before_action :permit_only_oneself, only: [:edit, :update]
+  before_action :cannot_show_deleted_end_user, only: :show
 
   def new
     @cat = Cat.new
@@ -17,7 +19,6 @@ class Public::CatsController < ApplicationController
   end
 
   def show
-    @cat = Cat.find(params[:id])
     @posts = @cat.posts.order("created_at DESC").page(params[:page])
   end
 
@@ -44,11 +45,23 @@ class Public::CatsController < ApplicationController
     params.require(:cat).permit(:name, :sex, :introduction, :cat_image, :breed)
   end
 
-  def permit_only_oneself
+  def find_cat
     @cat = Cat.find(params[:id])
+  end
+
+  #自分の猫かチェックする
+  def permit_only_oneself
     end_user = @cat.end_user
     unless end_user == current_end_user
       redirect_to end_user_path(current_end_user)
+    end
+  end
+
+  #退会したユーザーの猫は見られないようにする
+  def cannot_show_deleted_end_user
+    if @cat.end_user.is_deleted == true
+      flash[:warning] = "退会したユーザーの猫は閲覧できません"
+      redirect_to request.referer
     end
   end
 end

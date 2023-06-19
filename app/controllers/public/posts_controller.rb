@@ -2,6 +2,7 @@ class Public::PostsController < ApplicationController
   before_action :authenticate_end_user!
   before_action :find_post, only: [:show, :edit, :update, :destroy]
   before_action :permit_only_oneself, only: [:edit, :update]
+  before_action :cannot_show_deleted_end_user, only: :show
 
   def new
     @post = Post.new
@@ -24,12 +25,12 @@ class Public::PostsController < ApplicationController
 
   def index
     if params[:post] == "likes"
-      @posts = current_end_user.like_posts.order("created_at DESC").page(params[:page])
+      @posts = current_end_user.like_posts.valid_posts.order("created_at DESC").page(params[:page])
     elsif params[:post] == "all"
-      @posts = Post.all.order("created_at DESC").page(params[:page])
+      @posts = Post.valid_posts.order("created_at DESC").page(params[:page])
     else
       #自分の猫とブックマークしている猫のidを*で展開し、そのidとcat_idが一致する投稿をDBからもってくる
-      @posts = Post.where(cat_id: [*current_end_user.cat_ids, *current_end_user.bookmark_cat_ids]).order("created_at DESC").page(params[:page])
+      @posts = Post.valid_posts.where(cat_id: [*current_end_user.cat_ids, *current_end_user.bookmark_cat_ids]).order("created_at DESC").page(params[:page])
     end
   end
 
@@ -68,9 +69,17 @@ class Public::PostsController < ApplicationController
     @post = Post.find(params[:id])
   end
 
+  #自分の投稿かチェックする
   def permit_only_oneself
-    end_user = @post.end_user
-    unless end_user == current_end_user
+    unless @post.end_user == current_end_user
+      redirect_to posts_path
+    end
+  end
+
+  #退会したユーザーの投稿は見られないようにする
+  def cannot_show_deleted_end_user
+    if @post.end_user.is_deleted == true
+      flash[:warning] = "退会したユーザーの投稿は閲覧できません"
       redirect_to posts_path
     end
   end

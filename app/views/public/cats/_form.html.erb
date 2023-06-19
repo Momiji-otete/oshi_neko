@@ -1,7 +1,11 @@
 <%= form_with model: cat do |f| %>
   <%= render "layouts/errors", obj: cat %>
+
+  <!--プレビュー表示-->
+  <img class="mt-2 cat-img cat-img-main" id="image-preview" src="#" alt="プレビュー">
+
   <div class="form-group">
-    <%= f.label :cat_image, "画像" %><br>
+    <%= f.label :cat_image, "画像(縦横比 1:1がお勧め)" %><br>
     <%= f.file_field :cat_image, accept: "image/*" %>
   </div>
   <div class="form-group">
@@ -29,3 +33,6 @@
     <%= f.submit submit, class: "btn btn-success float-right" %>
   </div>
 <% end %>
+
+<!--プレビューのjavascript読み込み -->
+<%= javascript_include_tag "img-preview" %>

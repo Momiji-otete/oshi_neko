@@ -41,12 +41,16 @@
       <% @posts.each do |post| %>
         <div class="col mb-2">
           <div class="card h-100">
-            <%= image_tag post.get_image(400,300), class: "card-img-top" %>
+            <%= image_tag post.get_image(800,600), class: "card-img-top" %>
             <div class="card-body">
               <div class="row">
-                <div class="col-4 text-center">
-                  <%= image_tag post.cat.get_cat_image(200,200), class: "cat-img cat-img-user" %>
-                  <p><%= post.cat.name %></p>
+                <div class="col-4">
+                  <div class="d-flex justify-content-center">
+                    <%= link_to cat_path(post.cat) do %>
+                      <%= image_tag post.cat.get_cat_image(200,200), class: "cat-img cat-img-user" %>
+                      <p class="text-center mt-2"><%= post.cat.name %></p>
+                    <% end %>
+                  </div>
                 </div>
                 <div class="col-8">
                   <p><%= post.title %></p>
