@@ -4,9 +4,13 @@
   <div class="row justify-content-center">
     <div class="col-8 mt-5">
       <%= form_with model: @post do |f| %>
+        <!--プレビュー表示-->
+        <img class="mt-2 post-image-preview" id="image-preview" src="#" alt="プレビュー">
+
         <div class="form-group">
           <%= f.label :image, "画像" %><br>
           <%= f.file_field :image, accept: "image/*" %>
+
         </div>
         <div class="form-group">
           <%= f.label :title, "タイトル" %>
@@ -32,3 +36,6 @@
     </div>
   </div>
 </div>
+
+<!--プレビューのjavascript読み込み -->
+<%= javascript_include_tag "img-preview" %>
