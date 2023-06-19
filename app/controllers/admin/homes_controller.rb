@@ -14,7 +14,7 @@ class Admin::HomesController < ApplicationController
     elsif @model == "post"
       @results = Post.search_for(@search_word, @method).page(params[:page])
     else #"tag"
-      @results = Tag.search_books_for(@search_word, @method).page(params[:page])
+      @results = Tag.search_posts_for(@search_word, @method).page(params[:page])
     end
   end
 end
