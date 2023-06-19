@@ -7,7 +7,8 @@ class Public::HomesController < ApplicationController
     else
       @rand_cats = []
     end
-    @posts = Post.joins(:end_user).where(end_user: { is_deleted: false }).order("created_at DESC").limit(3)
+
+    @posts = Post.valid_posts.order("created_at DESC").limit(3)
   end
 
   def about
@@ -18,11 +19,11 @@ class Public::HomesController < ApplicationController
     @search_word = params[:search_word]
     @method = params[:method]
     if @model == "cat"
-      @results = Cat.search_for(@search_word, @method).page(params[:page])
+      @results = Cat.valid_cats.search_for(@search_word, @method).page(params[:page])
     elsif @model == "post"
-      @results = Post.search_for(@search_word, @method).page(params[:page])
+      @results = Post.valid_posts.search_for(@search_word, @method).page(params[:page])
     else #"tag"
-      @results = Tag.search_books_for(@search_word, @method).page(params[:page])
+      @results = Tag.search_posts_for(@search_word, @method).page(params[:page])
     end
   end
 end

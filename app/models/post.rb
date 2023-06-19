@@ -6,6 +6,8 @@ class Post < ApplicationRecord
   has_many :post_tags, dependent: :destroy
   has_many :tags, through: :post_tags
 
+  scope :valid_posts, -> { joins(:end_user).where(end_user: { is_deleted: false }) }
+
   has_one_attached :image
 
   validates :title, presence: true

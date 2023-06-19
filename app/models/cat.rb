@@ -3,10 +3,12 @@ class Cat < ApplicationRecord
   has_many :bookmarks, dependent: :destroy
   has_many :posts, dependent: :destroy
 
+  scope :valid_cats, -> { joins(:end_user).where(end_user: { is_deleted: false })}
+
   enum sex: { unanswered: 0, male: 1, female: 2 }
 
   has_one_attached :cat_image
-  
+
   validates :name, presence: true
   validates :introduction, length: { maximum: 200 }
 
@@ -17,7 +19,7 @@ class Cat < ApplicationRecord
     end
     cat_image.variant(resize_to_limit: [width, height]).processed
   end
-  
+
   def self.search_for(search_word, method)
     if method == "perfect"
       Cat.where(breed: search_word)
