@@ -2,6 +2,20 @@
 @use 'top-button';
 @use 'top-slick';
 
+body {
+  background-color: rgba(255, 210, 210, 1.0);
+  color: rgba(128, 66, 66, 1.0);
+}
+
+.fadeInTrrigerOnce {
+  opacity: 0;
+}
+
+.card {
+  background-color: rgba(255, 255, 255, 0.7);
+  border: medium outset rgba(204, 167, 167, 0.8);
+}
+
 .about {
   img {
     height: 300px;
@@ -55,4 +69,5 @@
 
 .fa-star {
   font-size: 30px;
+  color: gold;
 }

@@ -19,7 +19,7 @@
       <div class="row row-cols-1 row-cols-sm-3">
         <% @cats.each do |cat| %>
           <div class="col">
-            <div class="card text-center">
+            <div class="card text-center shadow-sm swing">
               <div class="card-header">
                 <%= link_to cat_path(cat) do %>
                   <%= image_tag cat.get_cat_image(200,200), class: "cat-img cat-img-user" %>
