@@ -16,7 +16,9 @@ Rails.application.routes.draw do
     get "ranking" => "cats#ranking"
     get "end_users/withdraw_confirm" => "end_users#withdraw_confirm", as: "withdraw_confirm"
     patch "end_users/withdraw" => "end_users#withdraw"
-    resources :end_users, only: [:show, :edit, :update]
+    resources :end_users, only: [:show, :edit, :update] do
+      get "bookmark_cats" => "end_users#bookmark_cats"
+    end
     resources :cats, only: [:new, :create, :show, :edit, :update] do
       resource :bookmarks, only: [:create, :destroy]
     end
