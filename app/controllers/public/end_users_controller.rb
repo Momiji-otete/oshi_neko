@@ -31,6 +31,11 @@ class Public::EndUsersController < ApplicationController
     redirect_to root_path
   end
 
+  def bookmark_cats
+    @end_user = EndUser.find(params[:end_user_id])
+    @cats = @end_user.bookmark_cats.valid_cats.page(params[:page])
+  end
+
   private
 
   def end_user_params

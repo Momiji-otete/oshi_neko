@@ -32,6 +32,12 @@
                   <% end %>
                 </td>
               </tr>
+              <tr>
+                <td class="align-middle"></td>
+                <td class="align-middle bookmark-<%= @cat.id %>">
+                  <%= render "public/bookmarks/bookmarks_btn", cat: @cat %>
+                </td>
+              </tr>
             </tbody>
           </table>
           <div class="d-flex justify-content-end">

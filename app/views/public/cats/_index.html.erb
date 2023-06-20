@@ -1,29 +1,23 @@
-<table class="table">
-  <thead>
-    <tr>
-      <th class="col-3"></th>
-      <th class="col-3 align-middle">名前</th>
-      <th class="col-4 align-middle">猫種</th>
-      <th class="col-2 align-middle">ブックマーク数</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% cats.each do |cat| %>
-      <tr>
-        <td class="align-middle"><%= image_tag cat.get_cat_image(200,200), class: "cat-img cat-img-post" %></td>
-        <td class="align-middle">
+<div class="row row-cols-1 row-cols-sm-3">
+  <% cats.each do |cat| %>
+    <div class="col">
+      <div class="card text-center shadow-sm swing">
+        <div class="card-header">
           <%= link_to cat_path(cat) do %>
-            <%= cat.name %>
+            <%= image_tag cat.get_cat_image(200,200), class: "cat-img cat-img-user" %>
           <% end %>
-        </td>
-        <td class="align-middle"><%= cat.breed %></td>
-        <td class="align-middle bookmark-<%= cat.id %>">
-          <%= render "public/bookmarks/bookmarks_btn", cat: cat %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+        </div>
+        <div class="py-2">
+          <p><%= cat.name %></p>
+          <p><%= cat.breed %></p>
+          <div class="bookmark-<%= cat.id %>">
+            <%= render "public/bookmarks/bookmarks_btn", cat: cat %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
 <div class="d-flex justify-content-center">
   <%= paginate cats, theme: 'bootstrap-5' %>
 </div>
