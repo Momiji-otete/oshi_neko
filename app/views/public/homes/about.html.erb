@@ -1,19 +1,39 @@
 <div class="container about">
-  <div class="row">
-    <div class="col">
-      <div class="about-img-top">
-        <%= image_tag 'about-img-top.jpg' %>
-      </div>
-      <h3>About</h3>
-      <p>
-        
-      </p>
-      <ul>
-        <li></li>
-      </ul>
-      <div class="about-img-bottom">
-        <%= image_tag 'about-img-bottom.jpg' %>
+  <h3 class="my-5">About</h3>
+  <div class="row justify-content-center">
+    <div class="col d-flex justify-content-center">
+      <div>
+        <h5 class="fadeInDownTriggerOnce">推し猫は、猫の投稿ができるコミュニティサイトです。</h5>
+        <ul class="ml-5 mt-3">
+          <li class="fadeInTriggerOnce">投稿にいいねとコメントができます！</li>
+          <li class="fadeInTriggerOnce">星マークを押せばブックマークができます！</li>
+          <li class="fadeInTriggerOnce">猫の種類で登録されている猫の検索ができます！</li>
+          <li class="fadeInTriggerOnce">投稿タイトル名とタグ名から投稿を検索できます！</li>
+        </ul>
+        <div class="mx-auto fadeInDownTriggerOnce">
+          <%= image_tag 'about-img-top.jpg' %>
+        </div>
+
+        <h5 class="mt-5 fadeInDownTriggerOnce">こんな人におすすめです！</h5>
+        <ul class="ml-5 mt-3">
+          <li class="fadeInTriggerOnce">猫が好きな人</li>
+          <li class="fadeInTriggerOnce">飼っている猫を見てほしい人</li>
+          <li class="fadeInTriggerOnce">みんなの猫の投稿を見て癒さたい人</li>
+        </ul>
+        <div class="mx-auto fadeInDownTriggerOnce">
+          <%= image_tag 'about-img-middle.jpg' %>
+        </div>
+
+        <h5 class="mt-5 fadeInDownTriggerOnce">こんな使い方もできます！</h5>
+        <ul class="ml-5 mt-3">
+          <li class="fadeInTriggerOnce">投稿はしない、みんなの猫を見るだけ</li>
+          <li class="fadeInTriggerOnce">うちの猫がかわいいから日記代わりに投稿だけ</li>
+        </ul>
+        <div class="mx-auto fadeInDownTriggerOnce">
+          <%= image_tag 'about-img-bottom.jpg' %>
+        </div>
       </div>
     </div>
   </div>
 </div>
+<%= javascript_include_tag "public-about" %>
