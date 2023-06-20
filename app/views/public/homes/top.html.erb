@@ -23,11 +23,11 @@
 
   <h3 class="my-5">お勧めの猫</h3>
   <div class="row">
-    <div class="col-8 offset-1">
+    <div class="col-10 offset-1">
       <div class="row row-cols-1 row-cols-sm-3">
         <% @rand_cats.each do |cat| %>
           <div class="col">
-            <div class="card text-center pt-2 mb-2">
+            <div class="card text-center pt-2 mb-2 shadow-sm swing">
               <%= link_to cat_path(cat) do %>
                 <%= image_tag cat.get_cat_image(200,200), class: "cat-img cat-img-user" %>
               <% end %>
@@ -47,7 +47,7 @@
   <div class="row row-cols-1 row-cols-lg-3">
       <% @posts.each do |post| %>
         <div class="col mb-2">
-          <div class="card h-100">
+          <div class="card h-100 shadow-lg swing">
             <%= image_tag post.get_image(800,600), class: "card-img-top" %>
             <div class="card-body">
               <div class="row">
@@ -71,3 +71,5 @@
       <% end %>
   </div>
 </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/protonet-jquery.inview/1.1.2/jquery.inview.min.js"></script>
+<%= javascript_include_tag "card-swing" %>
