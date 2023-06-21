@@ -19,7 +19,7 @@ class Public::HomesController < ApplicationController
     @search_word = params[:search_word]
     @method = params[:method]
     if @model == "cat"
-      @results = Cat.valid_cats.search_for(@search_word, @method).page(params[:page])
+      @results = Cat.valid_cats.search_for(@search_word, @method).page(params[:page]).per(6)
     elsif @model == "post"
       @results = Post.valid_posts.search_for(@search_word, @method).page(params[:page])
     else #"tag"
