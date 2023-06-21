@@ -1,5 +1,5 @@
 class Public::CatsController < ApplicationController
-  before_action :authenticate_end_user!, except: :show
+  before_action :authenticate_end_user!
   before_action :find_cat, only: [:show, :edit, :update]
   before_action :permit_only_oneself, only: [:edit, :update]
   before_action :cannot_show_deleted_end_user, only: :show
