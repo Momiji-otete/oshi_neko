@@ -33,7 +33,7 @@ class Public::EndUsersController < ApplicationController
 
   def bookmark_cats
     @end_user = EndUser.find(params[:end_user_id])
-    @cats = @end_user.bookmark_cats.valid_cats.page(params[:page])
+    @cats = @end_user.bookmark_cats.valid_cats.page(params[:cat_page])
   end
 
   private

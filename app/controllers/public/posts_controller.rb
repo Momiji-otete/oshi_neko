@@ -25,12 +25,12 @@ class Public::PostsController < ApplicationController
 
   def index
     if params[:post] == "likes"
-      @posts = current_end_user.like_posts.valid_posts.order("created_at DESC").page(params[:page])
+      @posts = current_end_user.like_posts.valid_posts.order("created_at DESC").page(params[:post_page])
     elsif params[:post] == "all"
-      @posts = Post.valid_posts.order("created_at DESC").page(params[:page])
+      @posts = Post.valid_posts.order("created_at DESC").page(params[:post_page])
     else
       #自分の猫とブックマークしている猫のidを*で展開し、そのidとcat_idが一致する投稿をDBからもってくる
-      @posts = Post.valid_posts.where(cat_id: [*current_end_user.cat_ids, *current_end_user.bookmark_cat_ids]).order("created_at DESC").page(params[:page])
+      @posts = Post.valid_posts.where(cat_id: [*current_end_user.cat_ids, *current_end_user.bookmark_cat_ids]).order("created_at DESC").page(params[:post_page])
     end
   end
 

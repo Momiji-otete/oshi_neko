@@ -1,7 +1,7 @@
 <div class="row row-cols-1 row-cols-sm-3">
   <% cats.each do |cat| %>
     <div class="col">
-      <div class="card text-center shadow-sm swing">
+      <div class="card text-center shadow-sm swing h-100">
         <div class="card-header">
           <%= link_to cat_path(cat) do %>
             <%= image_tag cat.get_cat_image(200,200), class: "cat-img cat-img-user" %>
@@ -18,6 +18,8 @@
     </div>
   <% end %>
 </div>
-<div class="d-flex justify-content-center">
-  <%= paginate cats, theme: 'bootstrap-5' %>
+<div class="d-flex justify-content-center mt-3">
+  <%= paginate cats, param_name: "cat_page", theme: 'bootstrap-5' %>
 </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/protonet-jquery.inview/1.1.2/jquery.inview.min.js"></script>
+<%= javascript_include_tag "card-swing" %>

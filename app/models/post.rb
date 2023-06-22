@@ -25,6 +25,10 @@ class Post < ApplicationRecord
   def liked_by?(end_user)
     likes.exists?(end_user_id: end_user.id)
   end
+  
+  def is_own_post?(current_end_user)
+    end_user == current_end_user
+  end
 
   def save_tags(savepost_tags)
     # 既にその投稿に基づいたタグがあればタグのnameをcurrent_tagsに代入

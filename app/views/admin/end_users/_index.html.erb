@@ -3,6 +3,7 @@
     <tr>
       <th class="align-middle">ID</th>
       <th class="align-middle">ユーザー名</th>
+      <th class="align-middle">投稿数</th>
       <th class="align-middle">ステータス</th>
     </tr>
   </thead>
@@ -15,6 +16,7 @@
             <%= end_user.name %>
           <% end %>
         </td>
+        <td class="align-middle"><%= end_user.posts.count %>投稿</td>
         <% if end_user.is_deleted == false %>
           <td class="text-success align-middle">有効</td>
         <% else %>

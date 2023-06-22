@@ -11,6 +11,7 @@ class Cat < ApplicationRecord
 
   validates :name, presence: true
   validates :introduction, length: { maximum: 200 }
+  
 
   def get_cat_image(width, height)
     unless cat_image.attached?
@@ -18,6 +19,11 @@ class Cat < ApplicationRecord
       cat_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
     end
     cat_image.variant(resize_to_limit: [width, height]).processed
+  end
+  
+  #自分の猫かチェックする
+  def is_own_cat?(current_end_user)
+    end_user == current_end_user
   end
 
   def self.search_for(search_word, method)

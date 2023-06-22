@@ -18,7 +18,7 @@
         </div>
         <div class="form-group">
           <%= f.label :body, "本文" %>
-          <%= f.text_area :body, class: "form-control" %>
+          <%= f.text_area :body, placeholder: "200文字以内", class: "form-control" %>
         </div>
         <div class="form-group">
           <%= f.label :cat_id, "猫" %>
@@ -27,7 +27,7 @@
         <div class="form-group">
           <%= f.label :tag_name, "タグ(複数の場合は,で区切ってください)" %>
           <p>例：マンチカン,かわいい,足短い</p>
-          <%= f.text_field :tag_name, class: "form-control" %>
+          <%= f.text_field :tag_name, placeholder: "任意", class: "form-control" %>
         </div>
         <div class="form-group">
           <%= f.submit "投稿する", class: "btn btn-primary float-right" %>

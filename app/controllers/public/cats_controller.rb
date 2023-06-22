@@ -19,7 +19,7 @@ class Public::CatsController < ApplicationController
   end
 
   def show
-    @posts = @cat.posts.order("created_at DESC").page(params[:page])
+    @posts = @cat.posts.order("created_at DESC").page(params[:post_page])
   end
 
   def edit
@@ -35,7 +35,10 @@ class Public::CatsController < ApplicationController
   end
 
   def ranking
-    @cats = Cat.valid_cats.find(Bookmark.group(:cat_id).order('count(cat_id) desc').limit(10).pluck(:cat_id))
+    #退会していないユーザーの猫のIDを配列にする
+    valid_cat_ids = Cat.valid_cats.pluck(:id)
+    #bookmarkのcat_idをvalid_cat_idsで絞込み、cat_idごとに分けた後、cat_idの数で並び替え、cat_idのみを配列にして返し、その数字を元にCatモデルからデータを10取得する
+    @cats = Cat.find(Bookmark.where(cat_id: valid_cat_ids).group(:cat_id).order('count(cat_id) desc').limit(10).pluck(:cat_id))
   end
 
 
