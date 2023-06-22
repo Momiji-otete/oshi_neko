@@ -20,7 +20,7 @@ class Admin::EndUsersController < ApplicationController
 
   def posts_index
     @end_user = EndUser.find(params[:end_user_id])
-    @posts = @end_user.posts.page(params[:page])
+    @posts = @end_user.posts.order("created_at DESC").page(params[:page])
   end
 
 

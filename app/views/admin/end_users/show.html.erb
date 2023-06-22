@@ -46,9 +46,7 @@
           <div class="col">
             <div class="card text-center">
               <div class="card-header">
-                <%= link_to cat_path(cat) do %>
-                  <%= image_tag cat.get_cat_image(200,200), class: "cat-img cat-img-user" %>
-                <% end %>
+                <%= image_tag cat.get_cat_image(200,200), class: "cat-img cat-img-user" %>
               </div>
               <div class="py-2">
                 <%= cat.name %>
@@ -58,7 +56,7 @@
         <% end %>
       </div>
       <div class="d-flex justify-content-center mt-3">
-        <%= paginate @cats, param_name: "cat_page", theme: 'bootstrap-5' %>
+        <%= paginate @cats,  theme: 'bootstrap-5' %>
       </div>
     </div>
   </div>
