@@ -19,28 +19,7 @@
   <h5 class="my-5"><%= @end_user.name%>さんの猫ちゃん</h5>
   <div class="row mt-5">
     <div class="col-10 offset-1">
-      <div class="row row-cols-1 row-cols-sm-3">
-        <% @cats.each do |cat| %>
-          <div class="col">
-            <div class="card text-center shadow-sm swing">
-              <div class="card-header">
-                <%= link_to cat_path(cat) do %>
-                  <%= image_tag cat.get_cat_image(200,200), class: "cat-img cat-img-user" %>
-                <% end %>
-              </div>
-              <div class="py-2">
-                <%= cat.name %>
-                <div class="bookmark-<%= cat.id %>">
-                  <%= render "public/bookmarks/bookmarks_btn", cat: cat %>
-                </div>
-              </div>
-            </div>
-          </div>
-        <% end %>
-      </div>
-      <div class="d-flex justify-content-center mt-3">
-        <%= paginate @cats, param_name: "cat_page", theme: 'bootstrap-5' %>
-      </div>
+      <%= render "public/cats/index", cats: @cats %>
       <div class="d-flex justify-content-end">
         <% if @end_user == current_end_user %>
           <%= link_to "猫登録", new_cat_path, class: "btn btn-primary mt-3" %>
