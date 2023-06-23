@@ -1,0 +1,33 @@
+<%= form_with model: post do |f| %>
+  <%= render "layouts/errors", obj: post %>
+  <!--プレビュー表示-->
+  <img class="mt-2 post-image-preview" id="image-preview" src="#" alt="プレビュー">
+
+  <div class="form-group">
+    <%= f.label :image, "画像(縦横比 3:4がお勧め)" %><br>
+    <%= f.file_field :image, accept: "image/*" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :title, "タイトル" %>
+    <%= f.text_field :title, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :body, "本文" %>
+    <%= f.text_area :body, placeholder: "200文字以内", class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :cat_id, "猫" %>
+    <%= f.collection_select :cat_id, current_end_user.cats, :id, :name %>
+  </div>
+  <div class="form-group">
+    <%= f.label :tag_name, "タグ(複数の場合は,で区切ってください)" %>
+    <p>例：マンチカン,かわいい,足短い</p>
+    <%= f.text_field :tag_name, value: tag_list, placeholder: "任意", class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.submit submit, class: "btn btn-success float-right" %>
+  </div>
+<% end %>
+
+<!--プレビューのjavascript読み込み -->
+<%= javascript_include_tag "img-preview" %>
