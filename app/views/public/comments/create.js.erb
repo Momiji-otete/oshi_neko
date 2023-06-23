@@ -1,3 +1,5 @@
 $('.comment-textarea').val("");
 $('.comment-index').html("<%= j(render "public/comments/index", post: @comment.post) %>");
 $('.comment-count').html("<%= j(render "public/comments/comment_count", post: @comment.post) %>");
+<!--エラーメッセージを表示させた状態で、コメント投稿に成功するとエラーメッセージをリセットする-->
+$('.errors').html("<%= j(render 'layouts/errors', obj: @comment) %>");

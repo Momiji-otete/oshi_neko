@@ -15,6 +15,7 @@ class EndUser < ApplicationRecord
   validates :name, length: { in: 1..10 }, uniqueness: true
   validates :introduction, length: { maximum: 500 }
 
+  # 猫をブックマークしているかチェックする
   def bookmarked?(cat)
     bookmark_cats.include?(cat)
   end
