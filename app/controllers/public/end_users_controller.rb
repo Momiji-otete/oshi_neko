@@ -61,6 +61,7 @@ class Public::EndUsersController < ApplicationController
     end
   end
 
+  # ゲストユーザーはユーザー情報を編集できなくする
   def reject_guest_user
     find_end_user
     if @end_user.name == "guestuser"

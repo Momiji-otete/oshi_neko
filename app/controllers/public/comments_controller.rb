@@ -5,7 +5,8 @@ class Public::CommentsController < ApplicationController
     post = Post.find(params[:post_id])
     @comment = current_end_user.comments.new(comment_params)
     @comment.post_id = post.id
-    @comment.save
+    # 非同期でエラーメッセージを返す
+    render "validater" unless @comment.save
   end
 
   def destroy

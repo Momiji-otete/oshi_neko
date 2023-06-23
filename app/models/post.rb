@@ -22,14 +22,17 @@ class Post < ApplicationRecord
     image.variant(resize_to_limit: [width, height]).processed
   end
 
+  # いいねしているかチェックする
   def liked_by?(end_user)
     likes.exists?(end_user_id: end_user.id)
   end
-  
+
+  # 自分の投稿かチェックする
   def is_own_post?(current_end_user)
     end_user == current_end_user
   end
 
+  # タグの保存
   def save_tags(savepost_tags)
     # 既にその投稿に基づいたタグがあればタグのnameをcurrent_tagsに代入
     current_tags = self.tags.pluck(:name) unless self.tags.nil?

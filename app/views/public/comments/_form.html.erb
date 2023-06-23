@@ -1,4 +1,7 @@
 <%= form_with model: [post, post_comment], local: false do |f| %>
+  <div class="errors">
+    <%= render "layouts/errors", obj: post_comment %>
+  </div>
   <div class="form-group">
     <%= f.text_area :comment_content, rows: "4", placeholder: "コメントする(250文字以内)", class: "comment-textarea form-control" %>
   </div>
