@@ -23,4 +23,8 @@ module ApplicationHelper
       "dark"
     end
   end
+
+  def user_signed_in?
+    admin_signed_in? || end_user_signed_in?
+  end
 end
