@@ -8,16 +8,15 @@ body {
   color: rgba(128, 66, 66, 1.0);
 }
 
+a {
+  color: rgba(50, 140, 255, 1.0);
+}
+
 .fadeInTrrigerOnce,
 .fadeInDownTriggerOnce,
 .fadeInTriggerOnce,
 .slideInRightOnce {
   opacity: 0;
-}
-
-.card {
-  background-color: rgba(255, 255, 255, 0.7);
-  border: medium outset rgba(204, 167, 167, 0.8);
 }
 
 .about {
@@ -47,8 +46,9 @@ body {
   }
 }
 
-a {
-  color: rgba(50, 140, 255, 1.0);
+.card {
+  background-color: rgba(255, 255, 255, 0.7);
+  border: medium outset rgba(204, 167, 167, 0.8);
 }
 
 .table {

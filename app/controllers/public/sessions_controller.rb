@@ -48,7 +48,7 @@ class Public::SessionsController < Devise::SessionsController
     return unless @end_user #取得できなければ処理を終える
     #入力されたパスワードを確認後、is_deletedカラムを確認する
     if @end_user.valid_password?(params[:end_user][:password]) && @end_user.is_deleted
-      flash[:warning] = "お客様は退会済みです。申し訳ありませんが、再度登録をお願いします。"
+      flash[:warning] = "このユーザーは退会済みです。申し訳ありませんが、再度登録をお願いします。"
       redirect_to new_end_user_registration_path
     end
   end
