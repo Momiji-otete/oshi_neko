@@ -1,12 +1,14 @@
 <% if user_signed_in? %>
   <%= form_with url: (admin_signed_in? ? admin_search_path : search_path), method: :get do |f| %>
-    <%= f.text_field :search_word, placeholder: "検索" %>
+    <%= f.text_field :search_word, placeholder: "検索", class: "" %>
     <% if admin_signed_in? %>
       <%= f.select :model, options_for_select({"ユーザー" => "end_user", "投稿" => "post", "タグ" => "tag"}) %>
     <% else %>
       <%= f.select :model, options_for_select({"猫種" => "cat", "投稿" => "post", "タグ" => "tag"}) %>
     <% end %>
     <%= f.select :method, options_for_select({ "完全一致" => "perfect", "前方一致" => "forward", "後方一致" => "backward", "部分一致" => "partial" }) %>
-    <%= f.submit "検索" %>
+    <%= button_tag type: "submit", class: "btn btn-primary btn-sm mb-1" do %>
+      <i class="fa-solid fa-magnifying-glass"></i>
+    <% end %>
   <% end %>
 <% end %>
