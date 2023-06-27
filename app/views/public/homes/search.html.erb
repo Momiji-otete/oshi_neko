@@ -4,11 +4,13 @@
       <% if @model == "cat" %>
         <h3 class="my-5">猫検索</h3>
         <%= render "public/cats/index", cats: @results %>
-      <% elsif @model == "post" %>
-        <h3 class="my-5">投稿検索結果</h3>
-        <%= render "public/posts/index", posts: @results %>
-      <% elsif @model == "tag" %>
-        <h3 class="my-5">タグ検索結果</h3>
+      <% else %>
+        <% if @model == "post" %>
+          <h3 class="my-5">投稿検索結果</h3>
+        <% elsif @model == "tag" %>
+          <h3 class="my-5">タグ検索結果</h3>
+        <% end %>
+
         <%= render "public/posts/index", posts: @results %>
       <% end %>
     </div>
