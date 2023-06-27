@@ -9,7 +9,7 @@ class Cat < ApplicationRecord
 
   has_one_attached :cat_image
 
-  validates :name, presence: true
+  validates :name, presence: true, length: { maximum: 12 }
   validates :introduction, length: { maximum: 200 }
   
 
