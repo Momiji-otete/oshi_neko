@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
   scope module: :public do
     root :to => "homes#top"
+    get "end_users" => redirect("end_users/sign_up")
     get "about" => "homes#about"
     get "search" => "homes#search"
     get "ranking" => "cats#ranking"

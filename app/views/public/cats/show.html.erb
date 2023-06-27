@@ -1,56 +1,55 @@
 <div class="container">
-
-      <h3 class="mt-5">猫詳細</h3>
-      <div class="row">
-        <div class="col-9 mx-auto">
-          <div class="d-flex justify-content-center">
-            <%= image_tag @cat.get_cat_image(200,200), class: "cat-img cat-img-main my-5" %>
-          </div>
-          <table class="table table-borderless">
-            <tbody>
-              <tr>
-                <td class="col-3">名前</td>
-                <td class="align-middle"><%= @cat.name %></td>
-              </tr>
-              <tr>
-                <td>性別</td>
-                <td class="align-middle"><%= @cat.sex_i18n %></td>
-              </tr>
-              <tr>
-                <td>猫種</td>
-                <td class="align-middle"><%= @cat.breed %></td>
-              </tr>
-              <tr>
-                <td>猫紹介</td>
-                <td class="align-middle text-break"><%= @cat.introduction %></td>
-              </tr>
-              <tr>
-                <td class="align-middle">ご主人様</td>
-                <td class="align-middle">
-                  <%= link_to end_user_path(@cat.end_user) do %>
-                    <%= @cat.end_user.name %>
-                  <% end %>
-                </td>
-              </tr>
-              <tr>
-                <td class="align-middle"></td>
-                <td class="align-middle bookmark-<%= @cat.id %>">
-                  <%= render "public/bookmarks/bookmarks_btn", cat: @cat %>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-          <% if @cat.is_own_cat?(current_end_user) %>
-          <div class="d-flex justify-content-end">
-            <%= link_to "編集する", edit_cat_path(@cat), class: "btn btn-success" %>
-          </div>
-          <% end %>
-        </div>
+  <h3 class="mt-5">猫詳細</h3>
+  <div class="row">
+    <div class="col-9 mx-auto">
+      <div class="d-flex justify-content-center">
+        <%= image_tag @cat.get_cat_image(200,200), class: "cat-img cat-img-main my-5" %>
       </div>
-      <div class="row mt-5">
-        <div class="col">
-          <h5 class="my-5"><%= @cat.name%>ちゃんの投稿</h5>
-          <%= render "public/posts/index", posts: @posts %>
-        </div>
+      <table class="table table-borderless">
+        <tbody>
+          <tr>
+            <td class="col-3">名前</td>
+            <td class="align-middle"><%= @cat.name %></td>
+          </tr>
+          <tr>
+            <td>性別</td>
+            <td class="align-middle"><%= @cat.sex_i18n %></td>
+          </tr>
+          <tr>
+            <td>猫種</td>
+            <td class="align-middle"><%= @cat.breed %></td>
+          </tr>
+          <tr>
+            <td>猫紹介</td>
+            <td class="align-middle text-break"><%= @cat.introduction %></td>
+          </tr>
+          <tr>
+            <td class="align-middle">ご主人様</td>
+            <td class="align-middle">
+              <%= link_to end_user_path(@cat.end_user) do %>
+                <%= @cat.end_user.name %>
+              <% end %>
+            </td>
+          </tr>
+          <tr>
+            <td class="align-middle"></td>
+            <td class="align-middle bookmark-<%= @cat.id %>">
+              <%= render "public/bookmarks/bookmarks_btn", cat: @cat %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <% if @cat.is_own_cat?(current_end_user) %>
+      <div class="d-flex justify-content-end">
+        <%= link_to "編集する", edit_cat_path(@cat), class: "btn btn-success" %>
       </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="row mt-5">
+    <div class="col">
+      <h5 class="my-5"><%= @cat.name%>ちゃんの投稿</h5>
+      <%= render "public/posts/index", posts: @posts %>
+    </div>
+  </div>
 </div>

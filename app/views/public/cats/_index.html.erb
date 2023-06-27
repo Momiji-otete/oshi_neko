@@ -8,7 +8,7 @@
           <% end %>
         </div>
         <div class="py-2">
-          <p><%= cat.name %></p>
+          <p><%= link_to cat.name, cat_path(cat) %></p>
           <p><%= cat.breed %></p>
           <div class="bookmark-<%= cat.id %>">
             <%= render "public/bookmarks/bookmarks_btn", cat: cat %>
