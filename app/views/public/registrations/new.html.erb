@@ -37,6 +37,8 @@
   <div class="row mx-auto">
     <div class="col-10">
       <p><%= link_to "こちら", new_end_user_session_path %>からログインしてください。</p>
+      <p class="mt-5">ゲストログインもご利用いただけます。</p>
+      <%= link_to "ゲストログイン(閲覧用)", end_users_guest_sign_in_path, method: :post, class: "btn btn-sm btn-block btn-secondary sign_in mb-3" %>
     </div>
   </div>
 </div>
