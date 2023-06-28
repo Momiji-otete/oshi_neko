@@ -22,11 +22,11 @@
 - 猫の投稿を日記代わりにするとき
 
 ## 設計書
-[テーブル定義書](https://docs.google.com/spreadsheets/d/1FUKf-NokHGL95YCMibc8k6ZOz0Ubb7alhkonk7jXa7g/edit#gid=1373217982)　{:target="_blank"}
-[ER図](https://drive.google.com/file/d/1KE5mgIkwc5Xs5GD5V5Qc1sT68ZIBp1LN/view?usp=sharing){:target="_blank"}
-[UIflow](https://drive.google.com/file/d/1T9sL8Z81qv1KI_D8n-wh2J5oJajC9tIc/view?usp=sharing){:target="_blank"}
-[管理者ワイヤーフレーム](https://drive.google.com/file/d/1RW8fy8EJ7pbxGGKGklMBnZ-ygL0s_42V/view?usp=sharing){:target="_blank"}
-[エンドユーザーワイヤーフレーム](https://drive.google.com/file/d/1iA82L_enKgLvzj9dl93WZAMI6wQhQ9Od/view?usp=sharing){:target="_blank"}
+- [テーブル定義書](https://docs.google.com/spreadsheets/d/1FUKf-NokHGL95YCMibc8k6ZOz0Ubb7alhkonk7jXa7g/edit#gid=1373217982)
+- [ER図](https://drive.google.com/file/d/1KE5mgIkwc5Xs5GD5V5Qc1sT68ZIBp1LN/view?usp=sharing) {:target="_blank"}
+- [UIflow](https://drive.google.com/file/d/1T9sL8Z81qv1KI_D8n-wh2J5oJajC9tIc/view?usp=sharing) {:target="_blank"} 
+- [管理者ワイヤーフレーム](https://drive.google.com/file/d/1RW8fy8EJ7pbxGGKGklMBnZ-ygL0s_42V/view?usp=sharing){:target="_blank"}
+- [エンドユーザーワイヤーフレーム](https://drive.google.com/file/d/1iA82L_enKgLvzj9dl93WZAMI6wQhQ9Od/view?usp=sharing){:target="_blank"}
 
 ## 開発環境
 - OS：Linux(CentOS)
