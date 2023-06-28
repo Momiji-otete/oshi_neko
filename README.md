@@ -27,6 +27,7 @@
 - [UIflow](https://drive.google.com/file/d/1T9sL8Z81qv1KI_D8n-wh2J5oJajC9tIc/view?usp=sharing)
 - [管理者ワイヤーフレーム](https://drive.google.com/file/d/1RW8fy8EJ7pbxGGKGklMBnZ-ygL0s_42V/view?usp=sharing)
 - [エンドユーザーワイヤーフレーム](https://drive.google.com/file/d/1iA82L_enKgLvzj9dl93WZAMI6wQhQ9Od/view?usp=sharing)
+- [アプリケーション詳細設計書](https://docs.google.com/spreadsheets/d/163COt8z_6z1za_QVTcE9PQnlvQYhoWsUZhEXGfTm-y4/edit?usp=sharing)
 
 ## 開発環境
 - OS：Linux(CentOS)
