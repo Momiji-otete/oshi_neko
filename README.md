@@ -26,7 +26,6 @@
 ## 設計書
 - [テーブル定義書](https://docs.google.com/spreadsheets/d/1FUKf-NokHGL95YCMibc8k6ZOz0Ubb7alhkonk7jXa7g/edit#gid=1373217982)
 - [ER図](https://drive.google.com/file/d/1KE5mgIkwc5Xs5GD5V5Qc1sT68ZIBp1LN/view?usp=sharing)
-- [UIflow](https://drive.google.com/file/d/1T9sL8Z81qv1KI_D8n-wh2J5oJajC9tIc/view?usp=sharing)
 - [管理者ワイヤーフレーム](https://drive.google.com/file/d/1RW8fy8EJ7pbxGGKGklMBnZ-ygL0s_42V/view?usp=sharing)
 - [エンドユーザーワイヤーフレーム](https://drive.google.com/file/d/1iA82L_enKgLvzj9dl93WZAMI6wQhQ9Od/view?usp=sharing)
 - [アプリケーション詳細設計書](https://docs.google.com/spreadsheets/d/163COt8z_6z1za_QVTcE9PQnlvQYhoWsUZhEXGfTm-y4/edit?usp=sharing)
