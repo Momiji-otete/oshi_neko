@@ -12,8 +12,9 @@ class Public::PostsController < ApplicationController
 
   def create
     @post = current_end_user.posts.new(post_params)
-    #送られてきたtag_nameの区切り文字を半角スペースに変換し、文字列前後の余計な空白を除去し、半角スペースで区切って配列にする
-    tag_list = params[:post][:tag_name].gsub(/[　,、]/, " ").strip.split(/ +/)
+    #送られてきたtag_nameの区切り文字を半角スペースに変換し、文字列前後の余計な空白を除去し、
+    #半角スペースで区切って配列にする、uniqで重複しているタグがあれば削除する
+    tag_list = params[:post][:tag_name].gsub(/[　,、]/, " ").strip.split(/ +/).uniq
     if @post.save
       @post.save_tags(tag_list)
       flash[:notice] = "投稿しました。"
@@ -43,7 +44,7 @@ class Public::PostsController < ApplicationController
   end
 
   def update
-    tag_list = params[:post][:tag_name].gsub(/[　,、]/, " ").strip.split(/ +/)
+    tag_list = params[:post][:tag_name].gsub(/[　,、]/, " ").strip.split(/ +/).uniq
     if @post.update(post_params)
       @post.save_tags(tag_list)
       flash[:notice] = "変更を保存しました。"
